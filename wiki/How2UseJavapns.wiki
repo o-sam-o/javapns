@@ -3,11 +3,11 @@
 
 = Get your certificate =
 
-If you wanna use javapns on a pc, the first thing you have to do is exporting your certificate and you private key as a p12 file, using KeyChain on the mac. 
+If you wanna use javapns on a PC, the first thing you have to do is exporting your certificate and you private key as a p12 file, using [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain] on a MAC. 
 
-To do this, just select both certificate and private key (associated to the application you wish to use to send notifications) in KeyChain, and the right click on one item, and select "Export 2 elements", give a name (for example : _*myCertificate.p12*_) and password (for example : _*p@ssw0rd*_) and then export as p12.
+To do this, just select both certificate and private key (associated to the application you wish to use to send notifications) in [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain], and the right click on one item, and select "Export 2 elements", give a name (for example : _*myCertificate.p12*_) and password (for example : _*p@ssw0rd*_) and then export as p12.
 
-Once you did this, you can now copy this p12 file on your pc (for example _*C:/temp*_).
+Once you did this, you can now copy this p12 file on your PC (for example _*C:/temp*_).
 
 
 = Working with javapns =
