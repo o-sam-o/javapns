@@ -14,9 +14,12 @@ Once you did this, you can now copy this p12 file on your PC (for example _*C:/t
 
 Download javapns, and then add it to your java project classpath. To send notifications, you just need this :
 <code>
-PayLoad payload = new PayLoad("Hello World", "1", "default");
+PayLoad simplePayLoad = new PayLoad();
+simplePayLoad.addAlert("My alert message");
+simplePayLoad.addBadge(45);
+simplePayLoad.addSound("default");
 Device client = PushNotificationManager.getInstance().getDevice("my_iPhone");
 PushNotificationManager.getInstance().initializeConnection("gateway.sandbox.push.apple.com", 2195, "C:/temp/myCertificate.p12", "p@ssw0rd", SSLConnectionHelper.KEYSTORE_TYPE_PKCS12);
-PushNotificationManager.getInstance().sendNotification(client, payload);
+PushNotificationManager.getInstance().sendNotification(client, simplePayLoad);
 </code>
 And thats it, enjoy !
