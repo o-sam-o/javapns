@@ -35,7 +35,6 @@ And thats it, enjoy !
 
 == Send a complex notification == 
 
-You can use the previous example to instantiate a connection, but we will create a complex payload in this example
 <code>
 // Or create a complex PayLoad with a custom alert
 PayLoad complexPayLoad = new PayLoad();
@@ -59,6 +58,9 @@ ArrayList values = new ArrayList();
 values.add("value1");
 values.add(2);
 complexPayLoad.addCustomDictionary("acme3", values);
+Device client = PushNotificationManager.getInstance().getDevice("my_iPhone");
+PushNotificationManager.getInstance().initializeConnection("gateway.sandbox.push.apple.com", 2195, "C:/temp/myCertificate.p12", "p@ssw0rd", SSLConnectionHelper.KEYSTORE_TYPE_PKCS12);
+PushNotificationManager.getInstance().sendNotification(client, complexPayLoad);
 </code>
 
 The resulted payload will look like
