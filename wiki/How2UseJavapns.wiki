@@ -66,3 +66,4 @@ The resulted payload will look like
 <code>
 {"aps":{"sound":"default","alert":{"loc-args":["Test1","Test",2],"action-loc-key":"Open App","loc-key":"javapns rocks %@ %@%@"},"badge":45},"acme3":["value1",2],"acme2":42,"acme":"foo"}
 </code>
+http://img38.imageshack.us/img38/9242/javapns.jpg
