@@ -5,7 +5,7 @@
 
   * Each iPhone App requires it's own Certificate.
   * Only users with “Team Agent” access create a certificate
-  * You need to create an App ID without .* in the iPhone developer Portal. An App ID without .* means its unique and works only for a single application
+  * You need to create an App ID without `.*` in the iPhone developer Portal. An App ID without `.*` means its unique and works only for a single application
 
 ==== Log into the iPhone Developer Program Portal ====
   # Click on `Certificates` on the left menu
