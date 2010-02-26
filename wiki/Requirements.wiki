@@ -20,6 +20,6 @@ Example:
   2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4
   
 == iPhone App ==
-Badges will appear if the App is not running and the App is registered with the `!PushNotificationService`.
+Badges will appear if the App is not running and the App is registered with the `PushNotificationService`.
 
 All other notifications need to be handled by the App while the App is running.
