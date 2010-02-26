@@ -1,0 +1,6 @@
+#labels Help!
+
+Post a new Issue in the `Issues` tab, 
+leave as much detail as possible (including code snippets!).
+
+As issues are solved, the wiki will be expanded.
