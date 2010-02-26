@@ -1,5 +1,4 @@
 #labels Requirements
-
 == Java Libraries ==
 
 Source code requires the following jars: (built with Java1.6)
@@ -11,7 +10,7 @@ Source code requires the following jars: (built with Java1.6)
   
 == SSL Certificate (from Apple) ==
 The SSL Certificate is created by Apple from the App ID.
-(See certificate GetAPNSCertificate)
+(See certificate [GetAPNSCertificate])
 
 == iPhone Token ID ==
 Token ID is created on the iPhone
