@@ -1,0 +1,32 @@
+ #labels Complex Payload Example
+ 
+ <code>// Or create a complex PayLoad? with a custom alert
+ PayLoad? complexPayLoad = new PayLoad?();
+ PayLoadCustomAlert? customAlert = new PayLoadCustomAlert?();
+ // You can use addBody to add simple message, but we'll use
+ // a more complex alert message so let's comment it
+ // customAlert.addBody("My alert message");
+ customAlert.addActionLocKey("Open App");
+ customAlert.addLocKey("javapns rocks %@ %@%@");
+ ArrayList? parameters = new ArrayList?();
+ parameters.add("Test1");
+ parameters.add("Test");
+ parameters.add(2);
+ customAlert.addLocArgs(parameters);
+ complexPayLoad.addCustomAlert(customAlert);
+ complexPayLoad.addBadge(45);
+ complexPayLoad.addSound("default");
+ complexPayLoad.addCustomDictionary("acme", "foo");
+ complexPayLoad.addCustomDictionary("acme2", 42);
+ ArrayList? values = new ArrayList?();
+ values.add("value1");
+ values.add(2);
+ complexPayLoad.addCustomDictionary("acme3", values);
+ Device client = PushNotificationManager?.getInstance().getDevice("my_iPhone");
+ PushNotificationManager?.getInstance().initializeConnection("gateway.sandbox.push.apple.com", 2195, "C:/temp/myCertificate.p12", "p@ssw0rd", SSLConnectionHelper.KEYSTORE_TYPE_PKCS12);
+ PushNotificationManager?.getInstance().sendNotification(client, complexPayLoad);</code>
+ 
+The resulted payload will look like
+
+<code>{"aps":{"sound":"default","alert":{"loc-args":["Test1","Test",2],"action-loc-key":"Open App","loc-key":"javapns rocks %@ %@%@"},"badge":45},"acme3":["value1",2],"acme2":42,"acme":"foo"}</code>
+ 
