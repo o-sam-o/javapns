@@ -1,0 +1,27 @@
+
+#labels Basic Example
+
+= Basic Example =
+
+<code> // Setup up a simple message
+ PayLoad aPayload = new PayLoad(); 
+ aPayload.addBadge( 1 );
+
+ // Get PushNotification Instance 
+ PushNotificationManager pushManager = PushNotificationManager.getInstance(); 
+
+ // Link iPhone's UDID (64-char device token) to a stringName 
+ pushManager.addDevice("iPhone", iPhoneId );
+
+ // Get iPhone client 
+ Device client = pushManager.getDevice( "iPhone" );
+
+ // Initialize connection 
+ pushManager.initializeConnection( host, port, certificate, passwd, SSLConnectionHelper.KEYSTORE_TYPE_PKCS12 );
+
+ // Send message 
+ pushManager.sendNotification( client, aPayload );
+
+ // close connection 
+ pushManager.stopConnection(); 
+ pushManager.removeDevice( "iPhone" );</code>
