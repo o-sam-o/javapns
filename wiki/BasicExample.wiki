@@ -1,28 +1,28 @@
 #labels Basic Example
 
-<code>// Setup up a simple message
+<code> // Setup up a simple message
 !PayLoad aPayload = new !PayLoad(); 
 aPayload.addBadge( 1 );
 
-// Get PushNotification Instance 
+ // Get PushNotification Instance 
 !PushNotificationManager pushManager = !PushNotificationManager.getInstance(); 
 
-// Link iPhone's UDID (64-char device token) to a stringName 
+ // Link iPhone's UDID (64-char device token) to a stringName 
 pushManager.addDevice("iPhone", iPhoneId );
 
-// Get iPhone client 
+ // Get iPhone client 
 Device client = pushManager.getDevice( "iPhone" );
 
-// Initialize connection 
-pushManager.initializeConnection( host, port, certificate, passwd, !SSLConnectionHelper.KEYSTORE_TYPE_PKCS12 );
+ // Initialize connection 
+pushManager.initializeConnection( host, port, certificate, passwd, SSLConnectionHelper.KEYSTORE_TYPE_PKCS12 );
 
-// Send message 
+ // Send message 
 pushManager.sendNotification( client, aPayload );
 
-// close connection 
+ // close connection 
 pushManager.stopConnection(); 
 pushManager.removeDevice( "iPhone" );</code>
  
-The created payload looks like
+The created payload looks like:
 
 <code>{"aps":{"badge":1}}</code> 
