@@ -1,4 +1,4 @@
-#labels Readme first
+#labels Featured, Read me first
 
 JavaPNS is a Java Library used to send Apple Notification Service messages to iPhone Apps
 
