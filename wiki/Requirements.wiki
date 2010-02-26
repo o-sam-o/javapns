@@ -1,0 +1,25 @@
+#labels Requirements
+
+== Java Libraries ==
+
+Source code requires the following jars: (built with Java1.6)
+
+  * [http://commons.apache.org/downloads/download_lang.cgi commons-lang-2.4.jar]
+  * [http://commons.apache.org/downloads/download_io.cgi commons-io-1.4.jar]
+  * [http://sourceforge.net/projects/portecle/ bcprov-jdk16-145.jar]
+  * [http://logging.apache.org/log4j/1.2/download.html log4j-1.2.15.jar]
+  
+== SSL Certificate (from Apple) ==
+The SSL Certificate is created by Apple from the App ID.
+(See certificate GetAPNSCertificate)
+
+== iPhone Token ID ==
+Token ID is created on the iPhone
+
+Example:
+  2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4
+  
+== iPhone App ==
+Badges will appear if the App is not running and the App is registered with the PushNotificationService.
+
+All other notifications need to be handled by the App while the App is running.
