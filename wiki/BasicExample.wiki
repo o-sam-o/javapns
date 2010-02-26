@@ -22,3 +22,8 @@
  // close connection 
  pushManager.stopConnection(); 
  pushManager.removeDevice( "iPhone" );</code>
+ 
+The created payload looks like
+
+<code>{"aps":{"badge":1}}</code>
+ 
