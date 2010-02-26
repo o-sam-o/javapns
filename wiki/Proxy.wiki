@@ -1,0 +1,4 @@
+#labels Proxy Example
+
+<code>PushNotificationManager pushManager = PushNotificationManager.getInstance();
+pushManager.setProxy(host, port)</code>
