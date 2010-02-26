@@ -1,7 +1,6 @@
-#labels Tips
-Troubleshooting tips
+#labels Troubleshooting Tips
 
-= SSL Certificate issues =
+== SSL Certificate issues ==
 
 Enable SSL logging in java by adding the following to your java arguements:
 <code>-Djavax.net.debug=all</code>

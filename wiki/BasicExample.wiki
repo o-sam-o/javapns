@@ -1,7 +1,5 @@
 #labels Basic Example
 
-= Basic Example =
-
 <code> // Setup up a simple message
  PayLoad aPayload = new PayLoad(); 
  aPayload.addBadge( 1 );
