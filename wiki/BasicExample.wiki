@@ -4,7 +4,7 @@
 !PayLoad aPayload = new !PayLoad(); 
 aPayload.addBadge( 1 );
 
- // Get PushNotification Instance 
+ // Get !PushNotification Instance 
 !PushNotificationManager pushManager = !PushNotificationManager.getInstance(); 
 
  // Link iPhone's UDID (64-char device token) to a stringName 

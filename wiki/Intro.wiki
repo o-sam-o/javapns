@@ -2,16 +2,17 @@
 
 JavaPNS is a Java Library used to send Apple Notification Service messages to iPhone Apps
 
-[Requirements]
-[GetAPNSCertificate]
+Index:
+  * [Requirements]
+  * [GetAPNSCertificate]
 
-[Tips]
+  * [Tips]
 
-[BasicExample]
-[ComplexPayloadExample]
-[Proxy]
+  * [BasicExample]
+  * [ComplexPayloadExample]
+  * [Proxy]
 
-[Help]
+  * [Help]
 
 Old Documentation:
-[How2UseJavapns]
+  * [How2UseJavapns]

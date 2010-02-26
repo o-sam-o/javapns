@@ -14,12 +14,12 @@
   
 ==== Certificate request ====
   # Generate a certificate signing request from your Mac's [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain] and save to disk
-  # Upload the CertificateSigningRequest.certSigningRequest to the Program Portal
+  # Upload the `!CertificateSigningRequest.certSigningRequest` to the Program Portal
   # Wait for the generation of cert (about 1 min). Download the certificate (aps_developer_identity.cer) from the Program Portal
-  # Keep (or rename them if you want) these 2 files in a safe place. You might need the !CertificateSigningRequest.certSigningRequest file to request a production cert in the future or to renew it again.
+  # Keep (or rename them if you want) these 2 files in a safe place. You might need the `!CertificateSigningRequest.certSigningRequest` file to request a production cert in the future or to renew it again.
   
 ==== Export Certificate from Keychain ====
-  # Import the aps_developer_identity.cer into [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain]. 
+  # Import the `aps_developer_identity.cer` into [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain]. 
   # Select both certificate *and* private key (associated to the application you wish to use to send notifications)
   # Right click, and select `Export 2 elements`, give a name (for example : myCertificate.p12) and password (for example : p@ssw0rd) and then export as p12.
   
