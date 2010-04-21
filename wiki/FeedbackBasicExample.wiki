@@ -1,15 +1,15 @@
 #labels Feedback Basic Example
 
-<code> // Get !PushNotification Instance
+<code> // Get !FeedbackServiceManager Instance
 !FeedbackServiceManager feedbackManager = !FeedbackServiceManager.getInstance();
 
- // Initialize connection
+ // Get Devices
 !LinkedList<Device> devices = feedbackManager.getDevices( HOST, PORT, certificate, passwd, SSLConnectionHelper.KEYSTORE_TYPE_PKCS12 );
 
  // Display total devices returned						
 System.out.println( "Devices returned: " + devices.size() );
 
- // Iterate over all returned devices		
+ // Iterate over all returned devices and display each
 !ListIterator<Device> itr = devices.listIterator();
 while ( itr.hasNext() ) {
    	System.out.println( itr.next() );
