@@ -13,7 +13,7 @@ Download !IntallCert:
 http://blogs.sun.com/andreas/resource/InstallCert.java
 
 Compile it: 
-<code>javac InstallCert.java</code>
+<code>javac !InstallCert.java</code>
 
 Run it:
 <code>java !InstallCert gateway.sandbox.push.apple.com:2195</code>
@@ -25,7 +25,7 @@ Rename it:
 <code>mv jssecacerts apple.keystore</code>
 
 change the password: 
-<code>keytool -storepasswd -keystore apple.keystore -new [your_cert_passwd] -storepasswd changeit</code>
+<code>keytool -storepasswd -keystore apple.keystore -new !'your_cert_passwd' -storepasswd changeit</code>
 
 Put the apple.keystore where the java code is expecting it. 
 (see your java error logs)
