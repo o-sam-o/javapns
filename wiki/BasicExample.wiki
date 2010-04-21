@@ -1,4 +1,4 @@
-#labels Phase-Deploy
+#labels Phase-Deploy Featured
 #summary Basic Example
 <code> // Setup up a simple message
 !PayLoad aPayload = new !PayLoad(); 
