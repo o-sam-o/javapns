@@ -11,4 +11,4 @@ As issues are solved, the wiki will be expanded.
 
 Reason: This is most likely caused by the lack of having the Apple cert loaded in your keystore.
 
-Solution for version pre-1.6: Import keystore manually as per ImportAppleSSLCertIntoKeystore or upgrade to version 1.6.
+Solution for version pre-1.6: Import keystore manually as per ImportAppleCert or upgrade to version 1.6.
