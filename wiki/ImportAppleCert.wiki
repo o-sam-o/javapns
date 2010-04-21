@@ -16,7 +16,7 @@ Compile it:
 <code>javac InstallCert.java</code>
 
 Run it:
-<code>java InstallCert gateway.sandbox.push.apple.com:2195</code>
+<code>java !InstallCert gateway.sandbox.push.apple.com:2195</code>
 
 then... when asked to select something...enter:
 <code>1</code>
