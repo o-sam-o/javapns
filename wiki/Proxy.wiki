@@ -1,3 +1,4 @@
+#labels Phase-Deploy
 #summary Proxy Example
 
 <code> !PushNotificationManager pushManager = !PushNotificationManager.getInstance();
