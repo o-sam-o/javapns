@@ -1,4 +1,4 @@
-#labels Requirements
+#summary Requirements
 == Java Libraries ==
 
 Source code requires the following jars: (built with Java1.6)

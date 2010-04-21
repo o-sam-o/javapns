@@ -1,4 +1,4 @@
-#labels APNS Certificate Help
+#summary APNS Certificate Help
 
 === Generate APNS Certificate ===
 (from: [http://www.developers-life.com/apple-push-notification.html])

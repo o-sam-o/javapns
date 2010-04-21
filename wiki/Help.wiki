@@ -1,4 +1,5 @@
 #labels Help
+#summary Help Info
 =Overview=
 
 Post a new Issue in the `Issues` tab, 

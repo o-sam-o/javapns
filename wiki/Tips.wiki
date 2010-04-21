@@ -1,4 +1,4 @@
-#labels TroubleshootingTips
+#summary TroubleshootingTips
 == General suggestions ==
 
 Create a standalone java app that tests your configuration.

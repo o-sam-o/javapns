@@ -1,4 +1,4 @@
-#labels Complex Payload Example
+#summary Complex Payload Example
 
 <code>// Or create a complex !PayLoad with a custom alert
 !PayLoad complexPayLoad = new !PayLoad();

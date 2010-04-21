@@ -1,4 +1,4 @@
-#labels Feedback Basic Example
+#summary Feedback Basic Example
 
 <code> // Get !FeedbackServiceManager Instance
 !FeedbackServiceManager feedbackManager = !FeedbackServiceManager.getInstance();
