@@ -1,4 +1,9 @@
 #labels TroubleshootingTips
+== General suggestions ==
+
+Create a standalone java app that tests your configuration.
+This allows testing the certificate and sending to a known iPhoneID.
+
 == SSL Certificate issues ==
 
 Enable SSL logging in java by adding the following to your java VM arguments:
