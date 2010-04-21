@@ -1,4 +1,4 @@
-#Pre-1.6 version of importing Apple SSL Cert into Keystore
+# Pre-1.6 version of importing Apple SSL Cert into Keystore
 
 = Overview =
 To get the keystore working... (Since the apple cert is only fetched once, it seemed like a setup issue... but 
