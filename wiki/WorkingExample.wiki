@@ -30,7 +30,8 @@ import javapns.data.!PayLoad;
      // Badge
     private static final int BADGE = 66;
 
-     private static String iPhoneId = "2ed202ac08ea9...cf8d55910df290567037dcc4";
+     // iPhone's UDID (64-char device token)
+    private static String iPhoneId = "2ed202ac08ea9...cf8d55910df290567037dcc4";
     private static String certificate = "/absolute/path/to/my/certificate";
     private static String passwd = "mycertificatepassword";
 
