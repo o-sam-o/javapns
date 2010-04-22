@@ -1,9 +1,10 @@
-#labels Phase-Implementation
 #summary TroubleshootingTips
+#labels Phase-Implementation
 == General suggestions ==
 
 Create a standalone java app that tests your configuration.
 This allows testing the certificate and sending to a known iPhoneID.
+See WorkingExample
 
 == SSL Certificate issues ==
 
