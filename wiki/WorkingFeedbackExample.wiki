@@ -61,12 +61,10 @@ import javapns.data.Device;
             e.printStackTrace();
         }
     }
-}
-</code>
+}</code>
 
 = Output =
 <code>
 Connection initialized...
 Devices returned: 0
-done
-</code>
+done</code>
