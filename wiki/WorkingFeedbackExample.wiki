@@ -1,4 +1,5 @@
 #summary Working Feedback example that can be used for testing
+#labels Phase-QA,Phase-Support
 
 = Introduction =
 
