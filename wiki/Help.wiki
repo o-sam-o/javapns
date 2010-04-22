@@ -8,7 +8,7 @@ leave as much detail as possible (including code snippets!).
 As issues are solved, the wiki will be expanded.
 
 =Common Errors=
-<code>DerInputStream.getLength(): lengthTag=127, too big.</code>
+<code>!DerInputStream.getLength(): lengthTag=127, too big.</code>
 
 Reason: This is most likely caused by the lack of having the Apple cert loaded in your keystore.
 
