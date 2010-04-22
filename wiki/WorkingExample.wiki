@@ -16,7 +16,7 @@ Then run with the following command:
 _*Note:* List of Required Jars is on the [Requirements] page_
 
 For ssl debugging output, run the command:
-<code>java  -Djavax.net.debug=all -cp "/path/to/class/file/:/path/to/required/jars/*" Push</code>
+<code>java  -Djavax.net.debug=all -cp "/path/to/class/file/:/path/to/required/jars/`*`" Push</code>
 
 = Java file =
 
