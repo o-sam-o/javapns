@@ -63,3 +63,10 @@ import javapns.data.Device;
     }
 }
 </code>
+
+= Output =
+<code>
+Connection initialized...
+Devices returned: 0
+done
+</code>
