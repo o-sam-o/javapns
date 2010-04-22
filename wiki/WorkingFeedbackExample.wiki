@@ -1,0 +1,62 @@
+#summary Working Feedback example that can be used for testing
+
+= Introduction =
+
+Below is a handy test to verify that everything is working.
+
+_*Note:* Requires Java 1.6_
+
+Compile with the following command:
+<code>javac -cp "/path/to/required/jars/`*`" Feedback.java </code>
+
+Then run with the following command:
+<code>java6 -cp "/path/to/class/file/:/path/to/required/jars/`*`" Feedback</code>
+
+_*Note:* List of Required Jars is on the [Requirements] page_
+
+For ssl debugging output, run the command:
+<code>java -Djavax.net.debug=all -cp "/path/to/class/file/:/path/to/required/jars/`*`" Feedback</code>
+
+= Java file =
+
+<code>
+import java.util.!LinkedList;
+import java.util.!ListIterator;
+
+ import javapns.back.!FeedbackServiceManager;
+import javapns.back.!SSLConnectionHelper;
+import javapns.data.Device;
+
+ public class Feedback {
+    // APNs Server Host & port
+    private static final String HOST = "feedback.push.apple.com";
+    private static final int PORT = 2196;
+
+     private static String certificate = "/absolute/path/to/certificate";
+    private static String passwd = "certificatePassword";
+
+     public static void main( String[] args ) throws Exception {
+
+        try {
+            // Get !FeedbackServiceManager Instance
+            !FeedbackServiceManager feedbackManager = !FeedbackServiceManager.getInstance();
+
+             // Initialize connection
+            !LinkedList<Device> devices = feedbackManager.getDevices( HOST, PORT, certificate, passwd, !SSLConnectionHelper.KEYSTORE_TYPE_PKCS12 );
+            System.out.println( "Connection initialized..." );
+
+             System.out.println( "Devices returned: " + devices.size() );
+
+             !ListIterator<Device> itr = devices.listIterator();
+            while ( itr.hasNext() ) {
+                System.out.println( itr.next() );
+            }
+
+             System.out.println( "done" );
+
+         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code>
