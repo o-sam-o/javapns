@@ -82,3 +82,16 @@ import javapns.data.!PayLoad;
         }
     }
 }</code>
+
+=Output=
+<code>
+Setting up Push notification
+Payload setup successfull.
+{"aps":{"badge":66}}
+iPhone UDID taken.
+Token: 2ed202ac08ea9033665e853a3dc8bc4c5e78f7a6cf8d55910df230567037dcc4
+Client setup successfull.
+Connection initialized...
+Message sent!
+# of attempts: 3
+done</code>
