@@ -1,5 +1,7 @@
-#labels Phase-Deploy
 #summary Feedback Basic Example
+#labels Phase-Deploy
+
+_*Note:* feedback service seems to only work on the production url._
 
 <code> // Get !FeedbackServiceManager Instance
 !FeedbackServiceManager feedbackManager = !FeedbackServiceManager.getInstance();
