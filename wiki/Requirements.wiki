@@ -1,12 +1,12 @@
-#labels Phase-Requirements Phase-Deploy
 #summary Requirements
+#labels Phase-RequirementsPhase-Deploy
 == Java Libraries ==
 
 Source code requires the following jars: (built with Java1.6)
 
   * [http://commons.apache.org/downloads/download_lang.cgi commons-lang-2.4.jar]
   * [http://commons.apache.org/downloads/download_io.cgi commons-io-1.4.jar]
-  * [http://sourceforge.net/projects/portecle/ bcprov-jdk16-145.jar]
+  * [http://www.bouncycastle.org/latest_releases.html bcprov-jdk16-145.jar]
   * [http://logging.apache.org/log4j/1.2/download.html log4j-1.2.15.jar]
 
 Java1.5 may work with the correct supporting libraries. (ie: bcprov)
