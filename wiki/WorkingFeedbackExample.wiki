@@ -52,7 +52,8 @@ import javapns.data.Device;
 
              !ListIterator<Device> itr = devices.listIterator();
             while ( itr.hasNext() ) {
-                System.out.println( itr.next() );
+                Device device = itr.next();
+                System.out.println( "Device: id=[" + device.getId() + " token=[" + device.getToken() + "]" );
             }
 
              System.out.println( "done" );
