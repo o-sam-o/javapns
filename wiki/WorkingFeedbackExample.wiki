@@ -38,7 +38,7 @@ import javapns.data.Device;
      private static String certificate = "/absolute/path/to/certificate";
     private static String passwd = "certificatePassword";
 
-     public static void main( String[] args ) throws Exception {
+     public static void main( String`[]` args ) throws Exception {
 
         try {
             // Get !FeedbackServiceManager Instance
