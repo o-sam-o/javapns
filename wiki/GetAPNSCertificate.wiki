@@ -1,27 +1,37 @@
-#labels Phase-Deploy
 #summary APNS Certificate Help
+#labels Phase-Deploy
 
-=== Generate APNS Certificate ===
+= APNS Certificates =
+
+==Notes==
+*iPhone development certificate != iPhone push notification service certificate*
+   There are a several iPhone certificates such as :
+      * development
+      * push server
+      * game
+When you create your SSL push service Certificate (Apple), please ensure that Enable for Apple Push Notification service is checked.
+
+
+= Generate APNS Certificate =
 (from: [http://www.developers-life.com/apple-push-notification.html])
 
   * Each iPhone App requires it's own Certificate.
   * Only users with `Team Agent` access create a certificate
   * You need to create an App ID without `.*` in the iPhone developer Portal. An App ID without `.*` means its unique and works only for a single application
 
-==== Log into the iPhone Developer Program Portal ====
+== Log into the iPhone Developer Program Portal ==
   # Click on `Certificates` on the left menu
   # Click on the `How To` tab
   # Scroll down to the options at the bottom of the page
   
-==== Certificate request ====
+== Certificate request ==
   # Generate a certificate signing request from your Mac's [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain] and save to disk
   # Upload the `CertificateSigningRequest.certSigningRequest` to the Program Portal
   # Wait for the generation of cert (about 1 min). Download the certificate (aps_developer_identity.cer) from the Program Portal
   # Keep (or rename them if you want) these 2 files in a safe place. You might need the `CertificateSigningRequest.certSigningRequest` file to request a production cert in the future or to renew it again.
   
-==== Export Certificate from Keychain ====
+== Export Certificate from Keychain ==
   # Import the `aps_developer_identity.cer` into [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain]. 
   # Select both certificate *and* private key (associated to the application you wish to use to send notifications)
   # Right click, and select `Export 2 elements`, give a name (for example : myCertificate.p12) and password (for example : p@ssw0rd) and then export as p12.
   
-
