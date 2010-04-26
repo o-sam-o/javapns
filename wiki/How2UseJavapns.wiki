@@ -1,5 +1,9 @@
-#labels Deprecated
 #summary This article explains how to simply use javapns to send notifications
+#labels Deprecated
+
+= Update =
+
+Please go to [Intro] to see the latest info!
 
 = Get your certificate =
 
