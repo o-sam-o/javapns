@@ -9,12 +9,15 @@ Index:
 
   * [Tips]
 
+Sending Push Notifications:
   * [BasicExample]
   * [WorkingExample]
   * [ComplexPayloadExample]
+  * [Proxy]
+
+Getting device tokens where the notification delivery has failed:
   * [FeedbackBasicExample]
   * [WorkingFeedbackExample]
-  * [Proxy]
 
   * [Help]
 
