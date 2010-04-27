@@ -11,8 +11,9 @@
       * game
 When you create your SSL push service Certificate (Apple), please ensure that Enable for Apple Push Notification service is checked.
 
-
 = Generate APNS Certificate =
+Step by step Instructions: [http://appnotify.com/developer/getting-started-push]
+
 (from: [http://www.developers-life.com/apple-push-notification.html])
 
   * Each iPhone App requires it's own Certificate.
