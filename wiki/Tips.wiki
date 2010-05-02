@@ -8,6 +8,8 @@ This allows testing the certificate and sending to a known iPhoneID.
 
 See WorkingExample
 
+See WorkingFeedbackExample
+
 == SSL Certificate issues ==
 
 Enable SSL logging in java by adding the following to your java VM arguments:
