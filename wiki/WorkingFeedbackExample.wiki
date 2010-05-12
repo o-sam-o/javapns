@@ -45,7 +45,7 @@ import javapns.data.Device;
             !FeedbackServiceManager feedbackManager = !FeedbackServiceManager.getInstance();
 
              // Initialize connection
-            !LinkedList<Device> devices = feedbackManager.getDevices( HOST, PORT, certificate, passwd, !SSLConnectionHelper.KEYSTORE_TYPE_PKCS12 );
+            !LinkedList<Device> devices = feedbackManager.getDevices( HOST, PORT, certificate, passwd, SSLConnectionHelper.KEYSTORE_TYPE_PKCS12 );
             System.out.println( "Connection initialized..." );
 
              System.out.println( "Devices returned: " + devices.size() );
