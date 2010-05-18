@@ -9,7 +9,7 @@ Compile with the following command:
 <code>javac -cp "/path/to/required/jars/`*`" Push.java </code>
 
 Then run with the following command:
-<code>java6 -cp "/path/to/class/file/:/path/to/required/jars/`*`" Push</code>
+<code>java -cp "/path/to/class/file/:/path/to/required/jars/`*`" Push</code>
 
 _*Note:* List of Required Jars is on the [Requirements] page_
 
