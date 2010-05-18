@@ -5,8 +5,6 @@
 
 Below is a handy test to verify that everything is working.
 
-_*Note:* Requires Java 1.6_
-
 Compile with the following command:
 <code>javac -cp "/path/to/required/jars/`*`" Push.java </code>
 
