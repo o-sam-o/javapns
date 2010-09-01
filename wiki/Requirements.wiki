@@ -21,7 +21,9 @@ The SSL Certificate is created by Apple from the App ID.
 (See certificate [GetAPNSCertificate])
 
 == iPhone Token ID ==
-Token ID is created on the iPhone
+Token ID is provided by the iPhone API with the following code:
+
+{{{(void)application:(UIApplication )application didRegisterForRemoteNotificationsWithDeviceToken:(NSData)deviceToken}}}
 
 Example:
   2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4
