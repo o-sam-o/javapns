@@ -53,7 +53,7 @@ import javapns.data.!PayLoad;
         
                System.out.println( "Token: " + pushManager.getDevice( user.getUsername() ).getToken() );
 
-                Device client = pushManager.getDevice(user.getUsername());
+                Device client = pushManager.getDevice( user.getUsername() );
                pushManager.sendNotification( client, aPayload );
                System.out.println( "Message sent!" );
             }
