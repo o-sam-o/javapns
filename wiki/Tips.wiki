@@ -10,6 +10,12 @@ See WorkingExample
 
 See WorkingFeedbackExample
 
+== Internal logging ==
+
+More logging can be enabled by adding the following to your log4j.properties:
+<code>### log package activity
+log4j.logger.com.javapns=debug</code>
+
 == SSL Certificate issues ==
 
 Enable SSL logging in java by adding the following to your java VM arguments:
