@@ -7,7 +7,7 @@
   * Open-source libraries:
     * [http://commons.apache.org/downloads/download_lang.cgi commons-lang-2.4.jar]
     * [http://commons.apache.org/downloads/download_io.cgi commons-io-1.4.jar]
-    * [http://www.bouncycastle.org/latest_releases.html bcprov-jdk15-145.jar]
+    * [http://www.bouncycastle.org/latest_releases.html bcprov-jdk15-146.jar]
     * [http://logging.apache.org/log4j/1.2/download.html log4j-1.2.15.jar]
   * SSL certificate provided by Apple + private key, exported as a PKCS12 keystore file
   * Device Token ID  _(example: 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4)_
@@ -16,7 +16,7 @@
 
 == Usage ==
 
-*At this time, javapns 2.0 is only available by checking out the `javapns2` branch and building it.*
+*Download javapns2.0 from the Downloads page, or checkout the `javapns2` branch and build it.*
 
 javapns 2.0 is designed so it can be plugged into existing projects and use their own data storage systems for devices and applications. However, the library includes its own basic implementations of these objects, so you can get started in no time.
 
@@ -24,27 +24,27 @@ javapns 2.0 is designed so it can be plugged into existing projects and use thei
 ===Basic===
 Pushing a simple notification:
 <code>
-import javapns.communication.`*`;
-import javapns.devices.`*`;
-import javapns.notification.`*`;
+import javapns.`*`;
 	
 public class PushTest {
 
-	public static void main(String[] args) {
-		PushNotificationManager pushManager = new PushNotificationManager();
-		pushManager.addDevice("my_iPhone", "Your token");  // Provide your token
-		PayLoad simplePayLoad = new PayLoad();
-		simplePayLoad.addAlert("Hello World!");
-		Device client = pushManager.getDevice("my_iPhone");
-		
-		AppleNotificationServer server = new AppleNotificationServerBasicImpl(
-			"Path to .p12 keystore file", // Provide path to your keystore
-			"Password for keystore",  // Provide your keystore's password
-			ConnectionToAppleServer.KEYSTORE_TYPE_PKCS12, 
-			"gateway.sandbox.push.apple.com", 2195);
-			
-		pushManager.initializeConnection(server);
-		pushManager.sendNotification(client, simplePayLoad);
+	public static void main(String`[]` args) {
+	
+		Push.alert("Hello World!", "keystore.p12", "keystore_password", false, "Your token");
+
+	}
+}
+</code>
+
+To push to multiple devices:
+<code>
+import javapns.`*`;
+	
+public class PushTest {
+
+	public static void main(String`[]` args) {
+		String`[]` devices = {"token 1", "token 2"};
+		Push.alert("Hello World!", "keystore.p12", "keystore_password", false, devices);
 	}
 }
 </code>
@@ -87,7 +87,7 @@ public class DeviceFactoryImpl implements DeviceFactory {
   * Instantiate your `DeviceFactoryImpl` (can be instantiated by Spring)
   * Instantiate a `javapns.notification.PushNotificationManager` and invoke `setDeviceFactory(your DeviceFactoryImpl)` _(PushNotificationManager can be instantiated and DeviceFactoryImpl injected by Spring)_
   * Instantiate a `javapns.feedback.FeedbackServiceManager` and invoke `setDeviceFactory(your DeviceFactoryImpl)` _(FeedbackServiceManager can be instantiated and DeviceFactoryImpl injected by Spring)_
-  * From your code, use the `PushNotificationManager` and `FeedbackServiceManager` _(both can be injected by Spring)_ as in the Basic example
+  * From your code, use the `PushNotificationManager` and `FeedbackServiceManager` _(both can be injected by Spring)_ as documented
   * You can also implement your own `AppleNotificationServer` and `AppleFeedbackServer` so that connection configuration to Apple servers is stored in JPA as well
 
 
