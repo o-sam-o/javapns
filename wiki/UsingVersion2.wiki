@@ -49,6 +49,8 @@ public class PushTest {
 }
 </code>
 
+Notes:
+ * The boolean parameter in the code above tells javapns to use Apple's production servers or not.  If true, javapns will use the production services (gateway.push.apple.com:2195 and feedback.push.apple.com:2196); otherwise it will use the sandbox services (gateway.sandbox.push.apple.com:2195 and feedback.sandbox.push.apple.com:2196).
 
 ===Persisted with JPA===
   * Implement `javapns.devices.Device` as a POJO in your project
