@@ -49,8 +49,6 @@ public class PushTest {
 }
 </code>
 
-Notes:
- * The boolean parameter in the code above tells javapns to use Apple's production servers or not.  If true, javapns will use the production services (gateway.push.apple.com:2195 and feedback.push.apple.com:2196); otherwise it will use the sandbox services (gateway.sandbox.push.apple.com:2195 and feedback.sandbox.push.apple.com:2196).
 
 ===Persisted with JPA===
   * Implement `javapns.devices.Device` as a POJO in your project
@@ -105,3 +103,12 @@ and before using javapns in your code:
 		} catch (Exception e) {
 		}
 </code>
+
+
+
+
+
+===Useful notes===
+ * *Production vs Sandbox*: the methods in `javapns.Push` accept a boolean parameter that tells javapns to use Apple's production servers or not.  If `true`, javapns will use the production services (`gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`); otherwise it will use the sandbox services (`gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`).
+ * *Pushing to multiple devices*: when you have multiple devices to push to, make sure not to call `javapns.Push. ...()` for each and every token, as this will open and close network connections to Apple servers for each token (which Apple warns not to do).  Instead, provide an array of tokens; this will allow the library to open a connection, push your payload to all devices, and close the connection.
+ * *Detecting push errors*:  invoke `javapns.Push.feedback(...)` periodically to get a list of devices you should remove from your notification list.  Do NOT rely on the list returned by the various push methods in `javapns.Push`, as they simply return a list of devices that the push engine processed (without knowing the actual push result).  Please see Apple's documentation on the Feedback Service to understand how push errors are reported.
