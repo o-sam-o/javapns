@@ -4,6 +4,7 @@
 == Requirements ==
 
   * Java 1.5
+  * javapns 2.0: [http://code.google.com/p/javapns/downloads/list javapns_2.0_Beta_2.jar]
   * Open-source libraries:
     * [http://commons.apache.org/downloads/download_lang.cgi commons-lang-2.4.jar]
     * [http://commons.apache.org/downloads/download_io.cgi commons-io-1.4.jar]
@@ -13,6 +14,7 @@
   * Device Token ID  _(example: 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4)_
   * iPhone app
 
+<br />
 
 == Usage ==
 
@@ -33,8 +35,7 @@ public class PushTest {
 		Push.alert("Hello World!", "keystore.p12", "keystore_password", false, "Your token");
 
 	}
-}
-</code>
+}</code>
 
 To push to multiple devices:
 <code>
@@ -46,9 +47,9 @@ public class PushTest {
 		String`[]` devices = {"token 1", "token 2"};
 		Push.alert("Hello World!", "keystore.p12", "keystore_password", false, devices);
 	}
-}
-</code>
+}</code>
 
+<br />
 
 ===Persisted with JPA===
   * Implement `javapns.devices.Device` as a POJO in your project
@@ -82,8 +83,7 @@ public class DeviceFactoryImpl implements DeviceFactory {
 	public void removeDevice(String id) throws UnknownDeviceException, NullIdException {
 		entityManager.remove(getDevice(id));
 	}
-}
-</code>
+}</code>
   * Instantiate your `DeviceFactoryImpl` (can be instantiated by Spring)
   * Instantiate a `javapns.notification.PushNotificationManager` and invoke `setDeviceFactory(your DeviceFactoryImpl)` _(PushNotificationManager can be instantiated and DeviceFactoryImpl injected by Spring)_
   * Instantiate a `javapns.feedback.FeedbackServiceManager` and invoke `setDeviceFactory(your DeviceFactoryImpl)` _(FeedbackServiceManager can be instantiated and DeviceFactoryImpl injected by Spring)_
@@ -91,7 +91,32 @@ public class DeviceFactoryImpl implements DeviceFactory {
   * You can also implement your own `AppleNotificationServer` and `AppleFeedbackServer` so that connection configuration to Apple servers is stored in JPA as well
 
 
-===Debugging===
+<br />
+
+===From the command line===
+====Push a test notification====
+To push a simple "Hello World!" alert notification to a single device from the command line, use the library's built-in command-line tool (_make sure you specify a path and a password to YOUR keystore, as well as a valid device token_):
+
+Push to sandbox:<code>java -cp "javapns_2.0_Beta_2.jar:bcprov-jdk15-146.jar:commons-io-1.4.jar:commons-lang-2.4.jar:log4j-1.2.15.jar" javapns.test.NotificationTestSimple keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4</code>
+
+Push to production:<code>java -cp "javapns_2.0_Beta_2.jar:bcprov-jdk15-146.jar:commons-io-1.4.jar:commons-lang-2.4.jar:log4j-1.2.15.jar" javapns.test.NotificationTestSimple keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 production</code>
+
+<br />
+
+====Query the Feedback Service====
+To query the Feedback Service from the command line, use the library's built-in command-line tool (_make sure you specify a path and a password to YOUR keystore_):
+
+Feedback from sandbox:<code>java -cp "javapns_2.0_Beta_2.jar:bcprov-jdk15-146.jar:commons-io-1.4.jar:commons-lang-2.4.jar:log4j-1.2.15.jar" javapns.test.FeedbackTestSimple keystore.p12 yourPassword</code>
+
+Feedback from production:<code>java -cp "javapns_2.0_Beta_2.jar:bcprov-jdk15-146.jar:commons-io-1.4.jar:commons-lang-2.4.jar:log4j-1.2.15.jar" javapns.test.FeedbackTestSimple keystore.p12 yourPassword production</code>
+
+
+<br />
+----
+<br />
+
+
+==Enabling logging==
 javapns uses Log4J for logging. To enable logging quickly, add the following code:
 <code>
 import org.apache.log4j.`*`;
@@ -101,15 +126,13 @@ and before using javapns in your code:
 		try {
 			BasicConfigurator.configure();
 		} catch (Exception e) {
-		}
-</code>
+		}</code>
 
 
 
 
-
-===Useful notes===
+==Useful notes==
  * *Production vs Sandbox*: the methods in `javapns.Push` accept a boolean parameter that tells javapns to use Apple's production servers or not.  If `true`, javapns will use the production services (`gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`); otherwise it will use the sandbox services (`gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`).
  * *Pushing to multiple devices*: when you have multiple devices to push to, make sure not to call `javapns.Push. ...()` for each and every token, as this will open and close network connections to Apple servers for each token (which Apple warns not to do).  Instead, provide an array of tokens; this will allow the library to open a connection, push your payload to all devices, and close the connection.
  * *Detecting push errors*:  invoke `javapns.Push.feedback(...)` periodically to get a list of devices you should remove from your notification list.  *Do NOT* rely on the list returned by the various push methods in `javapns.Push`, as they simply return a list of devices that the push engine processed (without knowing the actual push result).  Please see Apple's documentation on the Feedback Service to understand how push errors are reported.
- * *Device token vs Device ID or UDID*: tokens and UDIDs should not be confused...  *the library uses 64-byte tokens exclusively*, which is how Apple designed the Push Notification System.  You cannot push to a device using its device ID;  your mobile app MUST get a valid device token from Apple and use that token to push notifications to that device.  Note that the id used by javapns's DeviceFactory is a local reference only and is not related to the actual device UDID;  we recommend you use the device token as the id to make sure that all local devices have unique local identifiers.
+ * *Device token vs Device ID or UDID*: tokens and UDIDs should not be confused...  *the library uses 64-byte tokens exclusively*, which is how Apple designed the Push Notification System.  You cannot push to a device using its device ID;  your mobile app MUST get a valid device token from Apple and use that token to push notifications to that device.  Note that the id used by javapns's DeviceFactory is a local reference only and is not related to the actual device UDID;  we recommend you use the device token as the id to make sure that all local devices have unique local identifiers.  Typically, a mobile app retrieves a token from Apple and registers it with a provider (your server);  the provider can then provide the token it received to the javapns library to push notifications.
