@@ -1,5 +1,5 @@
 #summary Pre-1.6 version of importing Apple SSL Cert into Keystore (not to be confused with Java version 1.6)
-#labels Phase-Deploy
+#labels Deprecated
 = Overview =
 To get the keystore working... (In Version 1.6 and later.. .this is NOT REQUIRED!)
 
