@@ -4,7 +4,7 @@
 == Requirements ==
 
   * Java 1.5
-  * javapns 2.0: [http://code.google.com/p/javapns/downloads/list javapns_2.0_Beta_2.jar]
+  * javapns 2.0: [http://code.google.com/p/javapns/downloads/list javapns_2.0_Beta_3.jar]
   * Open-source libraries:
     * [http://commons.apache.org/downloads/download_lang.cgi commons-lang-2.4.jar]
     * [http://commons.apache.org/downloads/download_io.cgi commons-io-1.4.jar]
@@ -13,6 +13,8 @@
   * SSL certificate provided by Apple + private key, exported as a PKCS12 keystore file
   * Device Token ID  _(example: 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4)_
   * iPhone app
+
+*IMPORTANT*: If you are upgrading from javapns 1.x, please read the *Upgrading from javapns 1.x* section below.
 
 <br />
 
@@ -97,24 +99,32 @@ public class DeviceFactoryImpl implements DeviceFactory {
 ====Push a test notification====
 To push a simple "Hello World!" alert notification to a single device from the command line, use the library's built-in command-line tool (_make sure you specify a path and a password to YOUR keystore, as well as a valid device token_):
 
-Push to sandbox:<code>java -cp "javapns_2.0_Beta_2.jar:bcprov-jdk15-146.jar:commons-io-1.4.jar:commons-lang-2.4.jar:log4j-1.2.15.jar" javapns.test.NotificationTestSimple keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4</code>
+Push to sandbox:<code>java -cp "javapns_2.0_Beta_3.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 sandbox</code>
 
-Push to production:<code>java -cp "javapns_2.0_Beta_2.jar:bcprov-jdk15-146.jar:commons-io-1.4.jar:commons-lang-2.4.jar:log4j-1.2.15.jar" javapns.test.NotificationTestSimple keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 production</code>
+Push to production:<code>java -cp "javapns_2.0_Beta_3.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 production</code>
+
+To push a complex test payload instead, add the word "complex" after the commands above.
 
 <br />
 
 ====Query the Feedback Service====
 To query the Feedback Service from the command line, use the library's built-in command-line tool (_make sure you specify a path and a password to YOUR keystore_):
 
-Feedback from sandbox:<code>java -cp "javapns_2.0_Beta_2.jar:bcprov-jdk15-146.jar:commons-io-1.4.jar:commons-lang-2.4.jar:log4j-1.2.15.jar" javapns.test.FeedbackTestSimple keystore.p12 yourPassword</code>
+Feedback from sandbox:<code>java -cp "javapns_2.0_Beta_3.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword sandbox</code>
 
-Feedback from production:<code>java -cp "javapns_2.0_Beta_2.jar:bcprov-jdk15-146.jar:commons-io-1.4.jar:commons-lang-2.4.jar:log4j-1.2.15.jar" javapns.test.FeedbackTestSimple keystore.p12 yourPassword production</code>
+Feedback from production:<code>java -cp "javapns_2.0_Beta_3.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword production</code>
 
 
 <br />
 ----
 <br />
 
+==Documentation==
+ * *User documentation*:  please see the wiki
+ * *Javadoc*:  full javadoc is available in SVN (as a .jar file and unpackaged)
+
+
+<br />
 
 ==Enabling logging==
 javapns uses Log4J for logging. To enable logging quickly, add the following code:
@@ -128,11 +138,16 @@ and before using javapns in your code:
 		} catch (Exception e) {
 		}</code>
 
+<br />
+
+==Upgrading from javapns 1.x==
+javapns 2.0 has been completely reengineered to be more flexible and adapt to a larger number of projects.  Consequently, many classes have been refactored, replaced by interfaces where possible, and other changes.  Please take some time to look at the javadoc for version 2.0 so you can make the necessary changes in your existing code.  If your use of javapns is somewhat basic, you should look at the new `javapns.Push` class which is the new preferred and much simpler way of quickly pushing notifications.
 
 
 
 ==Useful notes==
  * *Production vs Sandbox*: the methods in `javapns.Push` accept a boolean parameter that tells javapns to use Apple's production servers or not.  If `true`, javapns will use the production services (`gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`); otherwise it will use the sandbox services (`gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`).
- * *Pushing to multiple devices*: when you have multiple devices to push to, make sure not to call `javapns.Push. ...()` for each and every token, as this will open and close network connections to Apple servers for each token (which Apple warns not to do).  Instead, provide an array of tokens; this will allow the library to open a connection, push your payload to all devices, and close the connection.
+ * *Pushing to multiple devices*: when you have multiple devices to push to, make sure not to call `javapns.Push. ...()` for each and every token, as this will open and close network connections to Apple servers for each token (which Apple warns not to do).  Instead, provide an array of tokens; this will allow the library to open a connection, push your payload to all devices, and close the connection.  Also, to push notifications to large number of devices, consider using specialized classes in `javapns.notification.transmission`.
  * *Detecting push errors*:  invoke `javapns.Push.feedback(...)` periodically to get a list of devices you should remove from your notification list.  *Do NOT* rely on the list returned by the various push methods in `javapns.Push`, as they simply return a list of devices that the push engine processed (without knowing the actual push result).  Please see Apple's documentation on the Feedback Service to understand how push errors are reported.
  * *Device token vs Device ID or UDID*: tokens and UDIDs should not be confused...  *the library uses 64-byte tokens exclusively*, which is how Apple designed the Push Notification System.  You cannot push to a device using its device ID;  your mobile app MUST get a valid device token from Apple and use that token to push notifications to that device.  Note that the id used by javapns's DeviceFactory is a local reference only and is not related to the actual device UDID;  we recommend you use the device token as the id to make sure that all local devices have unique local identifiers.  Typically, a mobile app retrieves a token from Apple and registers it with a provider (your server);  the provider can then provide the token it received to the javapns library to push notifications.
+ * *MDM support*: basic support has been included in javapns 2.0 for Apple's MDM technology.  The intent of this addition is to make javapns even more useful to enterprise customers, thus improving widespread usage of this library.  MDM is not the primary target of javapns (Push Notification is), and consequently mdm support is provided as is, without serious testing.  If you are involved in MDM, please feel free to get involved in this project so this area can be enhanced.
