@@ -99,9 +99,9 @@ public class DeviceFactoryImpl implements DeviceFactory {
 ====Push a test notification====
 To push a simple "Hello World!" alert notification to a single device from the command line, use the library's built-in command-line tool (_make sure you specify a path and a password to YOUR keystore, as well as a valid device token_):
 
-Push to sandbox:<code>java -cp "javapns_2.0_Beta_3.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 sandbox</code>
+Push to sandbox:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 sandbox</code>
 
-Push to production:<code>java -cp "javapns_2.0_Beta_3.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 production</code>
+Push to production:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 production</code>
 
 To push a complex test payload instead, add the word "complex" after the commands above.
 
@@ -110,9 +110,9 @@ To push a complex test payload instead, add the word "complex" after the command
 ====Query the Feedback Service====
 To query the Feedback Service from the command line, use the library's built-in command-line tool (_make sure you specify a path and a password to YOUR keystore_):
 
-Feedback from sandbox:<code>java -cp "javapns_2.0_Beta_3.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword sandbox</code>
+Feedback from sandbox:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword sandbox</code>
 
-Feedback from production:<code>java -cp "javapns_2.0_Beta_3.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword production</code>
+Feedback from production:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword production</code>
 
 
 <br />
