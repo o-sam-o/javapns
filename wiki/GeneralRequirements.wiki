@@ -1,0 +1,48 @@
+#summary Requirements
+#labels Phase-Deploy
+
+=Requirements=
+
+==REQUIREMENT #1:  javapns library==
+
+*javapns* is distributed as a standard `.jar` Java library which you will need to download.
+
+The latest public release can be downloaded from the [http://code.google.com/p/javapns/downloads/list Downloads page].
+
+The latest nightly build _(may not be production-ready)_ can be downloaded from [http://code.google.com/p/javapns/source/browse/#svn%2Fbranches%2Fjavapns2 SVN].
+
+<br />
+
+==REQUIREMENT #2:    Java dependencies==
+
+A few required open-source libraries will need to be included in the classpath to use javapns:
+
+    * [http://commons.apache.org/downloads/download_lang.cgi commons-lang-2.4.jar]
+    * [http://commons.apache.org/downloads/download_io.cgi commons-io-1.4.jar]
+    * [http://www.bouncycastle.org/latest_releases.html bcprov-jdk15-146.jar]
+    * [http://logging.apache.org/log4j/1.2/download.html log4j-1.2.15.jar]
+  
+<br />
+
+== REQUIREMENT #3:   SSL Certificate (from Apple) ==
+The SSL Certificate is created by Apple from the App ID.  This step is the biggest source of problems for first-time users.  SSL certificates need to be generated very carefully, and any deviation from the procedure usually results in unexpected results.  See the *[PreparingCertificates Preparing certificates]* page for all the details.
+
+<br />
+
+== REQUIREMENT #4:   Device Token ==
+A Device Token is provided by the iOS API with the following code:
+
+{{{(void)application:(UIApplication )application didRegisterForRemoteNotificationsWithDeviceToken:(NSData)deviceToken}}}
+
+Example:
+  2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4
+
+*Important note about Device token vs Device ID or UDID*: tokens and UDIDs should not be confused...  *the library uses 64-byte tokens exclusively*, which is how Apple designed the Push Notification System.  You cannot push to a device using its device ID;  your mobile app MUST get a valid device token from Apple and use that token to push notifications to that device.  Note that the id used by javapns's DeviceFactory is a local reference only and is not related to the actual device UDID;  we recommend you use the device token as the id to make sure that all local devices have unique local identifiers.  Typically, a mobile app retrieves a token from Apple and registers it with a provider (your server);  the provider can then provide the token it received to the javapns library to push notifications.
+  
+<br />
+<br />
+
+==REQUIREMENT #5:    iOS App ==
+Badges will appear if the App is not running and the App is registered with the `PushNotificationService`.
+
+All other notifications need to be handled by the App while the App is running.
