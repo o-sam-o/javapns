@@ -1,5 +1,5 @@
-#labels Phase-Deploy Featured
 #summary Basic Example
+#labels Deprecated
 <code> // Setup up a simple message
 !PayLoad aPayload = new !PayLoad(); 
 aPayload.addBadge( 1 );
