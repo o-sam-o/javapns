@@ -4,7 +4,7 @@
 == Requirements ==
 
   * Java 1.5
-  * javapns 2.0: [http://code.google.com/p/javapns/downloads/list javapns_2.0_Beta_4.jar]
+  * javapns 2.0: [http://code.google.com/p/javapns/downloads/list javapns_2.0_Beta_5.jar]
   * Open-source libraries:
     * [http://commons.apache.org/downloads/download_lang.cgi commons-lang-2.4.jar]
     * [http://commons.apache.org/downloads/download_io.cgi commons-io-1.4.jar]
@@ -50,6 +50,8 @@ public class PushTest {
 		Push.alert("Hello World!", "keystore.p12", "keystore_password", false, devices);
 	}
 }</code>
+
+All push methods in the `javapns.Push` class return a list of `javapns.notification.PushedNotification` objects.  A `PushedNotification` object is created for each individual message (ie one per payload per device) the library pushes toward Apple servers, and encapsulates useful details about each attempt.  To find out if a push was successfully sent to Apple and that Apple did not return any error-response packet, simply invoke the `PushedNotification.isSuccessful()` method.  More advanced users can get the actual error-response packet (if any was received) by invoking `PushedNotification.getResponse()`.
 
 <br />
 
@@ -99,9 +101,9 @@ public class DeviceFactoryImpl implements DeviceFactory {
 ====Push a test notification====
 To push a simple "Hello World!" alert notification to a single device from the command line, use the library's built-in command-line tool (_make sure you specify a path and a password to YOUR keystore, as well as a valid device token_):
 
-Push to sandbox:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 sandbox</code>
+Push to sandbox:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 sandbox</code>
 
-Push to production:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 production</code>
+Push to production:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 production</code>
 
 To push a complex test payload instead, add the word "complex" after the commands above.
 
@@ -110,9 +112,9 @@ To push a complex test payload instead, add the word "complex" after the command
 ====Query the Feedback Service====
 To query the Feedback Service from the command line, use the library's built-in command-line tool (_make sure you specify a path and a password to YOUR keystore_):
 
-Feedback from sandbox:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword sandbox</code>
+Feedback from sandbox:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword sandbox</code>
 
-Feedback from production:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword production</code>
+Feedback from production:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword production</code>
 
 
 <br />
@@ -121,7 +123,7 @@ Feedback from production:<code>java -cp "javapns_2.0_Beta_4.jar:lib/bcprov-jdk15
 
 ==Documentation==
  * *User documentation*:  please see the wiki
- * *Javadoc*:  full javadoc is available in SVN as a .jar file ([http://code.google.com/p/javapns/source/browse/branches/javapns2/javapns_2.0_Beta_4_javadoc.jar direct link])
+ * *Javadoc*:  full javadoc is available in SVN as a .jar file ([http://code.google.com/p/javapns/source/browse/branches/javapns2/javapns_2.0_Beta_5_javadoc.jar direct link])
 
 _Please note that user documentation is still under development.  The best and most up-to-date source of information about how the library works and can be used is most likely the javadoc.  Please refer to the javadoc for more information about library usage.
 _
@@ -151,7 +153,7 @@ javapns 2.0 has been completely reengineered to be more flexible and adapt to a 
 ==Useful notes==
  # *Production vs Sandbox*: the methods in `javapns.Push` accept a boolean parameter that tells javapns to use Apple's production servers or not.  If `true`, javapns will use the production services (`gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`); otherwise it will use the sandbox services (`gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`).
  # *Pushing to multiple devices*: when you have multiple devices to push to, make sure not to call `javapns.Push. ...()` for each and every token, as this will open and close network connections to Apple servers for each token (which Apple warns not to do).  Instead, provide an array of tokens; this will allow the library to open a connection, push your payload to all devices, and close the connection.  Also, to push notifications to large number of devices, consider using specialized classes in `javapns.notification.transmission`.
- # *Detecting push errors*:  invoke `javapns.Push.feedback(...)` periodically to get a list of devices you should remove from your notification list.  *Do NOT* rely on the list returned by the various push methods in `javapns.Push`, as they simply return a list of devices that the push engine processed (without knowing the actual push result).  Please see Apple's documentation on the Feedback Service to understand how push errors are reported.
+ # *Detecting push errors*:  Examine the list of `PushedNotification` objects returned by push methods; the `PushedNotification.isSuccessful()` method helps determining quickly if a notification was successfully sent to Apple. You should also invoke `javapns.Push.feedback(...)` periodically to get a list of devices you should remove from your notification list.  Please see Apple's documentation on the Feedback Service to understand how push errors are reported.
  # *Delays involving the Feedback service*: Since Apple does not specify precisely when a device will end up on the Feedback list (ie how many failed push must occur or how much time must elapse before it is marked as inactive), I believe that what you are seeing is the normal behaviour of Apple's Feedback Service. We must not forget that the whole purpose of having an asynchronous Feedback Service to detect inactive devices instead of simply receiving error codes while pushing notifications is because Apple has a lot of factors to consider before listing a device as inactive...  If a notification can't be pushed, it can be because of network issues, device issues, bad reception issues, configuration issues, etc.  but if any of these problems arise, it does not necessarily mean that the device is permanently inactive...  it may simply be a temporary situation.
  # *Sandbox Feedback Service not listing device after app is removed*:  iOS needs to inform the feedback service when a notification-enabled application is uninstalled, so that the device can be listed instantly by that service. HOWEVER, from various bits and pieces of information around the web, we learn that apparently there needs to remain at least one other notification-enabled application on the device so that iOS can inform the Feedback Service of the uninstallation. If the application you uninstall was the last notification-enabled app, iOS apparently cannot tell the Feedback Service about the uninstallation, and your device doesn't get listed right away (although it most likely will after some number of failed pushes and some time has elapsed).  This information suggests that not only do you need to have at least one other notification-enabled app on your device so that your own app uninstallation will be broadcasted, but that other app needs to be configured to talk to the SAME Feedback service (sandbox or production).
  # *Device token vs Device ID or UDID*: tokens and UDIDs should not be confused...  *the library uses 64-byte tokens exclusively*, which is how Apple designed the Push Notification System.  You cannot push to a device using its device ID;  your mobile app MUST get a valid device token from Apple and use that token to push notifications to that device.  Note that the id used by javapns's DeviceFactory is a local reference only and is not related to the actual device UDID;  we recommend you use the device token as the id to make sure that all local devices have unique local identifiers.  Typically, a mobile app retrieves a token from Apple and registers it with a provider (your server);  the provider can then provide the token it received to the javapns library to push notifications.
@@ -160,4 +162,4 @@ javapns 2.0 has been completely reengineered to be more flexible and adapt to a 
   * device tokens are not the same for sandbox and production, you need new tokens when moving to production
   * certificates are also different (see [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ProvisioningDevelopment/ProvisioningDevelopment.html Certificates])
   * some users have reported issues which might be solved by the procedure described on [http://www.techjini.com/blog/2009/10/22/how-we-fixed-production-push-notifications-not-working-while-sandbox-works/ this page]
- # *Enhanced notification format*: the Apple Push Notification System describes an optional enhanced notification format which provides support for various additional options (see [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html this page]).  At this time, javapns 2.0 always uses the enhanced notification format when pushing notifications to Apple servers.  However, it does not currently read nor use the error packets that might be returned by Apple servers.  See issue #47 for an enhancement request regarding support for error packets.
+ # *Enhanced notification format*: the Apple Push Notification System describes an optional enhanced notification format which provides support for various additional options (see [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html this page]).  javapns 2.0 always uses the enhanced notification format when pushing notifications to Apple servers.  To customize the expiry option provided by the enhanced notification format, you must first get a Payload object and invoke `payload.setExpiry(long)` to customize its value (default is 1 day).  Error-response packets, if any are received, are attached to their related `PushedNotification` objects, allowing you to analyze notification results in context.
