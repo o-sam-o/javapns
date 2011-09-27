@@ -1,4 +1,5 @@
 #summary Feedback Service
+#labels Phase-Implementation
 
 = Feedback Service =
 
@@ -16,6 +17,11 @@ public class FeedbackTest {
 	}
 }</code>
 The `feedback` method's first parameter is a reference to your keystore;  it can be either a `java.io.File`, a `java.lang.String` (path to your keystore file), a `java.io.InputStream` or a `byte[]` array.  The second parameter is your keystore's password.  The third parameter selects the production (`true`) or sandbox (`false`) service.
+
+<br />
+
+===More detailed example===
+A more detailed and functional example can be seen in the library's source code.  See class `javapns.test.FeedbackTest`.
 
 <br />
 
