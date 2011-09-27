@@ -1,0 +1,25 @@
+#summary Feedback Service
+
+= Feedback Service =
+
+Querying the Feedback Service:
+<code>
+import javapns.`*`;
+	
+public class FeedbackTest {
+
+	public static void main(String`[]` args) {
+	
+		List<Device> inactiveDevices = Push.feedback("keystore.p12", "keystore_password", false);
+		`/*` remove inactive devices from your own list of devices `*/`
+
+	}
+}</code>
+The `feedback` method's first parameter is a reference to your keystore;  it can be either a `java.io.File`, a `java.lang.String` (path to your keystore file), a `java.io.InputStream` or a `byte[]` array.  The second parameter is your keystore's password.  The third parameter selects the production (`true`) or sandbox (`false`) service.
+
+<br />
+
+== Important notes ==
+
+ # *Delays involving the Feedback service*: Since Apple does not specify precisely when a device will end up on the Feedback list (ie how many failed push must occur or how much time must elapse before it is marked as inactive), I believe that what you are seeing is the normal behaviour of Apple's Feedback Service. We must not forget that the whole purpose of having an asynchronous Feedback Service to detect inactive devices instead of simply receiving error codes while pushing notifications is because Apple has a lot of factors to consider before listing a device as inactive...  If a notification can't be pushed, it can be because of network issues, device issues, bad reception issues, configuration issues, etc.  but if any of these problems arise, it does not necessarily mean that the device is permanently inactive...  it may simply be a temporary situation.<br /><br />
+ # *Sandbox Feedback Service not listing device after app is removed*:  iOS needs to inform the feedback service when a notification-enabled application is uninstalled, so that the device can be listed instantly by that service. HOWEVER, from various bits and pieces of information around the web, we learn that apparently there needs to remain at least one other notification-enabled application on the device so that iOS can inform the Feedback Service of the uninstallation. If the application you uninstall was the last notification-enabled app, iOS apparently cannot tell the Feedback Service about the uninstallation, and your device doesn't get listed right away (although it most likely will after some number of failed pushes and some time has elapsed).  This information suggests that not only do you need to have at least one other notification-enabled app on your device so that your own app uninstallation will be broadcasted, but that other app needs to be configured to talk to the SAME Feedback service (sandbox or production).
