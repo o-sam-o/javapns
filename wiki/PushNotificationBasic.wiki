@@ -1,0 +1,30 @@
+#summary Basic Push Notification
+
+= Basic Push Notification =
+
+Pushing a simple notification to a single device:
+<code>
+import javapns.`*`;
+	
+public class PushTest {
+
+	public static void main(String`[]` args) {
+	
+		Push.alert("Hello World!", "keystore.p12", "keystore_password", false, "Your token");
+
+	}
+}</code>
+
+Pushing a simple notification to multiple devices:
+<code>
+import javapns.`*`;
+	
+public class PushTest {
+
+	public static void main(String`[]` args) {
+		String`[]` devices = {"token 1", "token 2"};
+		Push.alert("Hello World!", "keystore.p12", "keystore_password", false, devices);
+	}
+}</code>
+
+All push methods in the `javapns.Push` class return a list of `javapns.notification.PushedNotification` objects.  A `PushedNotification` object is created for each individual message (ie one per payload per device) the library pushes toward Apple servers, and encapsulates useful details about each attempt.  To find out if a push was successfully sent to Apple and that Apple did not return any error-response packet, simply invoke the `PushedNotification.isSuccessful()` method.  More advanced users can get the actual error-response packet (if any was received) by invoking `PushedNotification.getResponse()`.
