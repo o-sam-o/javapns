@@ -1,5 +1,5 @@
-#labels Phase-Deploy
 #summary Complex Payload Example
+#labels Deprecated
 
 <code>// Or create a complex !PayLoad with a custom alert
 !PayLoad complexPayLoad = new !PayLoad();
