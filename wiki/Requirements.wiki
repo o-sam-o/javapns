@@ -1,5 +1,5 @@
 #summary Requirements
-#labels Phase-RequirementsPhase-Deploy
+#labels Deprecated
 == Java Libraries ==
 
 ===Java 1.6 Version===
