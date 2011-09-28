@@ -17,4 +17,6 @@ _javadoc_ for nightly builds is available in [http://code.google.com/p/javapns/s
 
 ==APNS documentation==
 Documentation on the _Apple Push Notification Service_ can be found here:
- * [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html Communicating with APS]
+ * [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html Communicating with APS]  (web version)
+ * [http://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/RemoteNotificationsPG.pdf Communication with APS]  (PDF version)
+ * [http://developer.apple.com/library/ios/#technotes/tn2265/_index.html Technical note about push notifications]
