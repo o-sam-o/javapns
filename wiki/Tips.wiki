@@ -1,5 +1,5 @@
 #summary TroubleshootingTips
-#labels Phase-Implementation
+#labels Deprecated
 == General suggestions ==
 
 Create a standalone java app that tests your configuration.
