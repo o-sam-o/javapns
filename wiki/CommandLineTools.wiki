@@ -1,0 +1,28 @@
+#summary One-sentence summary of this page.
+#labels Phase-QA
+
+=Command line tools=
+
+*javapns* includes command line tools that can be used to push test notifications and query the Feedback Service from a console or terminal (no Java programming required), making it easier to test notifications in your mobile application.
+
+<br />
+
+
+===Pushing a test notification===
+You can push a simple "Hello World!" alert notification to a single device from the command line using one of the following commands (_make sure you specify a path and a password to YOUR keystore, as well as a valid device token_):
+
+To push a notification through the *sandbox* service:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 sandbox</code>
+
+To push a notification through the *production* service:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 production</code>
+
+<br />
+To push a complex test payload instead, add the word "complex" after the commands above:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.NotificationTest keystore.p12 yourPassword 2ed202ac08ea9033665d853a3dc8bc4c5e98f7c6cf8d55910df290567037dcc4 sandbox complex</code>
+
+<br />
+
+===Querying the Feedback Service===
+You can query the Feedback Service from the command line using one of the following commands (_make sure you specify a path and a password to YOUR keystore_):
+
+To query the *sandbox* Feedback Service:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword sandbox</code>
+
+To query the *production* Feedback Service:<code>java -cp "javapns_2.0_Beta_5.jar:lib/bcprov-jdk15-146.jar:lib/commons-io-1.4.jar:lib/commons-lang-2.4.jar:lib/log4j-1.2.15.jar" javapns.test.FeedbackTest keystore.p12 yourPassword production</code>
