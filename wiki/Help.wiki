@@ -1,5 +1,5 @@
-#labels Phase-Support
 #summary Help Info
+#labels Deprecated
 =Overview=
 
 Post a new Issue in the `Issues` tab, 
