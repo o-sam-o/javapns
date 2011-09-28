@@ -35,3 +35,14 @@ To send a notification to hundreds or thousands of devices, use the following co
 ===Configuring a proxy===
 To set a proxy for all connections initiated by javapns, use the following code:
 <code>pushNotificationManager.setProxy(host, port);</code>
+
+<br />
+
+===Enhanced notification format===
+The Apple Push Notification System describes an optional enhanced notification format which provides support for various additional options (see [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html this page]).  javapns 2.0 always uses the enhanced notification format when pushing notifications to Apple servers.  To customize the expiry option provided by the enhanced notification format, you must first get a Payload object and invoke `payload.setExpiry(long)` to customize its value (default is 1 day).  Error-response packets, if any are received, are attached to their related `PushedNotification` objects, allowing you to analyze notification results in context.
+
+<br />
+
+===OTA MDM technology support===
+
+javapns includes basic support for Apple's Over-The-Air (OTA) MDM technology. The intent of this addition is to make javapns even more useful to enterprise customers, thus improving widespread usage of this library. OTA MDM howerver is not the primary target of javapns (Push Notification is), and consequently mdm support is provided as is, without serious testing. If you are involved in MDM, please feel free to get involved in this project so this area can be enhanced.
