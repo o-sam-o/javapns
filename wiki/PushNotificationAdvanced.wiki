@@ -1,0 +1,31 @@
+#summary Advanced Push Notification
+#labels Phase-Implementation
+
+= Advanced Push Notification =
+
+===Sending large amounts of notifications (multi-threading)===
+
+*javapns* includes tools for streaming large number of notifications safely and efficiently using multiple parallel threads.
+
+To send a notification to hundreds or thousands of devices, use the following code:
+<code>public void send (List<Device> devices, Object keystore, String password, boolean production) {
+
+	`/*` Gather communication details `*/` 
+	AppleNotificationServer server = new AppleNotificationServerBasicImpl(keystore, password, production);
+
+	`/*` Prepare a simple payload to push `*/` 
+	Payload payload = PushNotificationPayload.alert("Hello World!");
+
+	`/*` Create 30 threads to spread the work evenly `*/` 
+	NotificationThreads work = new NotificationThreads(server, payload, devices, 30); 
+
+	`/*` Start all work threads simultaneously `*/` 
+	work.start();
+
+	`/*` Wait for all threads to finish their work `*/` 
+	work.waitForAllThreads();
+
+	`/*` Get a list of all pushed notifications `*/` 
+	List<PushedNotifications> notifications = work.getPushedNotifications();
+
+}</code>
