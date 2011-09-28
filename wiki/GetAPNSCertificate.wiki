@@ -1,5 +1,5 @@
 #summary APNS Certificate Help
-#labels Phase-Deploy
+#labels Deprecated
 
 = APNS Certificates =
 
