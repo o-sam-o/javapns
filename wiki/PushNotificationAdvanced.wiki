@@ -29,3 +29,9 @@ To send a notification to hundreds or thousands of devices, use the following co
 	List<PushedNotifications> notifications = work.getPushedNotifications();
 
 }</code>
+
+<br />
+
+===Configuring a proxy===
+To set a proxy for all connections initiated by javapns, use the following code:
+<code>pushNotificationManager.setProxy(host, port);</code>
