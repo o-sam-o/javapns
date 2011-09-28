@@ -1,0 +1,77 @@
+#summary Troubleshooting, solving issues, etc.
+#labels Phase-Support
+
+= Troubleshooting =
+
+===Find answers in the documentation===
+
+The *[http://code.google.com/p/javapns/w/list wiki]* contains a lot of useful information to get started and to solve common issues.  The *[http://code.google.com/p/javapns/downloads/list javadoc]* also contains a lot of useful information about using the library.
+
+<br />
+
+===Try the command line test tools===
+
+Before getting too deep into programming with the library, you might want to try out the command line test tools included with the library.  See the *[CommandLineTools Command line tools]* wiki page for more information.
+
+<br />
+
+===Study sample code and test classes===
+
+A few wiki pages provide sample code to get you started _(see [http://code.google.com/p/javapns/wiki/PushNotificationBasic Basic push notification] for example)_ with javapns.  You might also like to study the code in classes from the  [http://code.google.com/p/javapns/source/browse/#svn%2Fbranches%2Fjavapns2%2Fsrc%2Fjavapns%2Ftest  javapns.test]  package. 
+
+<br />
+
+===Enable logging===
+====Library logging====
+
+javapns uses Log4J for logging. To enable logging quickly, add the following code:
+<code>
+import org.apache.log4j.`*`;</code>
+and before using javapns in your code:
+<code>
+try {
+	BasicConfigurator.configure();
+} catch (Exception e) {
+}</code>
+If you are already using log4j, you can enable logging for javapns by adding the following line to your `log4j.properties` file:
+<code>
+log4j.logger.javapns=debug</code>
+
+====Java SSL logging====
+To troubleshoot certificate or SSL issues, add the following to your java VM arguments:
+<code>-Djavax.net.debug=all</code>
+
+<br />
+
+===Double-check your certificates===
+Most problems for first-time users revolve around the required SSL certificate.  
+ * make absolutely sure you follow precisely the procedure to generate and export your certificate
+ * verify that the certificate you are providing to javapns (inside a keystore file) was generated for the same Apple service you are using (sandbox or production) - see the [PreparingCertificates Preparing certificates] page
+
+<br />
+
+===Check the date and time===
+If the date and/or time is not set properly on your device or on your server, notifications might not be displayed on the device.  
+
+<br />
+
+===Examine pushed notifications===
+Examine the list of `PushedNotification` objects returned by push methods.  Once you have a list of PushedNotification, you might like to print it on the screen using the following line to get useful details about each push notification attempt:
+<code>NotificationTest.printPushedNotifications(yourList);</code>
+You can also find out if one `PushedNotification` was successful by calling:
+<code>boolean success = yourPushedNotification.isSuccessful();</code>
+
+You should also invoke `javapns.Push.feedback(...)` periodically to get a list of devices Apple believes to be inactive.
+
+<br />
+
+===Check prior issues===
+If you have a specific problem with push notifications, search the project's [http://code.google.com/p/javapns/issues/list Issues] database.  When searching or browsing issues, make sure you select "All issues" in the Search pop-up menu.
+
+<br />
+
+===Report an issues===
+If you are still experiencing a problem after following all of the above, add a new issue to the project's [http://code.google.com/p/javapns/issues/list Issues] database.  Please provide as much details as possible.  If your issue report is incomplete or not specific enough, it might take a lot more time for developers to help you out than if you provide a full and detailed report.
+
+
+<br />
