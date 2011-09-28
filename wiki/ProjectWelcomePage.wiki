@@ -7,9 +7,31 @@
 
 Welcome to the JavaPNS project!   This fully-featured Java library allows developers to push notifications to iOS devices _(iPhone, iPod, iPad, etc.)_ through the Apple Push Notification Service using a simple yet powerful set of tools.
 
+<table width="100%">
 
-<br />
-==Get started==
- # Read the [Documentation documentation]
- # Meet the [GeneralRequirements requirements]
+<td valign="top" border="0">
+====Capabilities===
+ * Start sending notifications using a single line of code
+ * Get started quickly with smart default settings
+ * Easily switch between Apple's sandbox or production services
+ * Use predefined simple notifications, or create custom and/or complex payloads
+ * Benefit from the enhanced notification format
+ * Send thousands of notifications using the built-in multi-threaded transmission engine
+ * Examine push notification results immediately and accurately
+ * Query the Feedback Service with a single line of code to find inactive devices
+ * Auto-resend notifications ignored by Apple servers after an error 
+ * Use bundled command-line tools to test push notification and feedback
+ * Build upon JavaPNS's API to extend its functionalities (such as JPA support)
+ * Learn everything about the library though its complete javadoc
+ * _and much more!_
+</td>
+
+<td valign="top">
+<br /><br />
+=Get started=
+<b>
+ # Read the [Documentation documentation]<br /><br />
+ # Meet the [GeneralRequirements requirements]<br /><br />
  # Push [PushNotificationBasic notifications]
+</b>
+</td></table>
