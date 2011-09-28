@@ -1,0 +1,14 @@
+#summary JavaPNS
+#labels Deprecated
+
+*JavaPNS is a Java interface to the Apple Push Notification Service.*
+
+Welcome to the JavaPNS project!   This fully-featured Java library allows developers to push notifications to iOS devices _(iPhone, iPod, iPad, etc.)_ through the Apple Push Notification Service using a simple yet powerful set of tools.
+
+^Update! (28/09/2011) : JavaPNS 2.0 RELEASE CANDIDATE is now available for download.  Please let us know what you think!^
+
+<br />
+==Get started==
+ # Read the [Documentation documentation]
+ # Meet the [GeneralRequirements requirements]
+ # Push [PushNotificationBasic notifications]
