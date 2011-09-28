@@ -1,5 +1,5 @@
-#labels Phase-Deploy
 #summary Proxy Example
+#labels Deprecated
 
 <code> !PushNotificationManager pushManager = !PushNotificationManager.getInstance();
 pushManager.setProxy(host, port)</code>
