@@ -1,4 +1,5 @@
 #summary Using javapns 2.0
+#labels Deprecated
 
 = javapns 2.0=
 == Requirements ==
