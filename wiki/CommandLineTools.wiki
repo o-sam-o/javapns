@@ -5,6 +5,19 @@
 
 *javapns* includes command line tools that can be used to push test notifications and query the Feedback Service from a console or terminal (no Java programming required), making it easier to test notifications in your mobile application.
 
+The following command line examples assume you have downloaded the latest javapns library and all the [http://code.google.com/p/javapns/wiki/GeneralRequirements required third-party libraries], that you have placed the third-party libraries inside a *`lib`* directory, that you have properly generated the [http://code.google.com/p/javapns/wiki/PreparingCertificates required keystore file], and that you will be running the command lines from the *`My project`* directory.
+
+<code>
+*My project/* 
+	javapns_2.0_RC.jar
+	keystore.p12
+	lib/
+		bcprov-jdk15-146.jar
+		commons-io-1.4.jar
+		commons-lang-2.4.jar
+		log4j-1.2.15.jar</code>
+
+
 <br />
 
 
