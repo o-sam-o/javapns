@@ -43,6 +43,32 @@ The Apple Push Notification System describes an optional enhanced notification f
 
 <br />
 
+===More control over default settings===
+The methods in `javapns.Push` accept a boolean parameter that tells javapns to use Apple's production servers or not.  If `true`, javapns will use the production services (`gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`); otherwise it will use the sandbox services (`gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`).
+
+To work around these predefined settings, take a look at the following code:
+<code>public void send (List<Device> devices, Object keystore, String password, String appleHost, int applePort) {
+
+	`/*` Gather communication details for your custom server `*/` 
+	AppleNotificationServer customServer = new AppleNotificationServerBasicImpl(keystore, password, ConnectionToAppleServer.KEYSTORE_TYPE_PKCS12, appleHost, applePort);
+
+	`/*` Prepare a simple payload to push `*/` 
+	Payload payload = PushNotificationPayload.alert("Hello World!");
+
+	`/*` Create a push notification manager `*/` 
+	PushNotificationManager pushManager = new PushNotificationManager();
+
+	`/*` Initialize the push manager's connection to the custom server `*/` 
+	pushManager.initializeConnection(customServer);
+
+	`/*` Push notifications and get the results `*/` 
+	List<PushedNotifications> notifications = pushManager.sendNotifications(payload, devices);
+
+}</code>
+
+
+<br />
+
 ===OTA MDM technology support===
 
 javapns includes basic support for Apple's Over-The-Air (OTA) MDM technology. The intent of this addition is to make javapns even more useful to enterprise customers, thus improving widespread usage of this library. OTA MDM howerver is not the primary target of javapns (Push Notification is), and consequently mdm support is provided as is, without serious testing. If you are involved in MDM, please feel free to get involved in this project so this area can be enhanced.
