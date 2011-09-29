@@ -29,6 +29,10 @@ public class PushTest {
 }</code>
 The `alert` method's first parameter is the alert message itself.  The second parameter is a reference to your keystore;  it can be either a `java.io.File`, a `java.lang.String` (path to your keystore file), a `java.io.InputStream` or a `byte[]` array.  The third parameter is your keystore's password.  The fourth parameter selects the production (`true`) or sandbox (`false`) service.  The fifth parameter is a device token (or a list of tokens) to push the alert to.
 
+There are other kinds of predefined notifications you can send from the `Push` class, such as sound, badge or combined.  You can also build a payload manually by instantiating a `PushNotificationPayload` object, configure it according to your mobile application's needs, and push it using the `payload` method in the `Push` class.
+
+Refer to the [Documentation javadoc] for more information about using the library.
+
 <br />
 
 ===More detailed example===
@@ -38,6 +42,40 @@ A more detailed and functional example can be seen in the library's source code.
 
 ===Managing errors===
 
+After sending push notifications, you will need to manage errors.  Errors can occur if you try to push a notification to an invalid token, if your mobile application is removed from a device, and many more other possibilities.  Managing errors allows you to cleanup your lists of devices so you can stop trying to push notifications to invalid or inactive devices. Apple's documentation states that they monitor providers for failure to cleanup their lists of devices, and that they can take action if the situation is not fixed promptly.  It is therefore important to manage push notification errors properly.
+
+The Apple Push Notification System uses two different error reporting systems which work differently and report different kinds of errors.  The first system — _error-response packets_ — is involved while pushing notifications.  When you push notifications, you immediately get access to these responses (if any) through the `PushedNotification` objects returned by push methods.  The second system is the _Feedback Service_, which you must call periodically to get a list of devices that Apple has found to be inactive. You *must not* rely exclusively on either of these systems to remove invalid devices;  you *must* handle errors from *both* systems, as one will not list devices reported by the other.
+
+====Handling error responses====
 All push methods in the `javapns.Push` class return a list of `javapns.notification.PushedNotification` objects.  A `PushedNotification` object is created for each individual message (ie one per payload per device) the library pushes toward Apple servers, and encapsulates useful details about each attempt.  
 
 To find out if a push was successfully sent to Apple and that Apple did not return any error-response packet, simply invoke the `PushedNotification.isSuccessful()` method.  More advanced users can get the actual error-response packet (if any was received) by invoking `PushedNotification.getResponse()`.
+
+Managing errors after pushing a simple notification to multiple devices:
+<code>
+import javapns.`*`;
+import javapns.notification.`*`;
+	
+public class PushTest {
+
+	public static void main(String`[]` args) {
+		String`[]` devices = {"token 1", "token 2"}; 
+		List<PushedNotification> notifications = Push.alert("Hello World!", 
+						"keystore.p12", "keystore_password", false, devices); 
+
+		for (PushedNotification notification : notifications) {
+			if (notification.isSuccessful()) {
+				`/* Apple accepted the notification and should deliver it */ ` 
+				System.out.println("Push notification sent successfully to: " +
+								notification.getDevice().getToken());
+				`/* Still need to query the Feedback Service regularly */ ` 
+			} else {
+				String invalidToken = notification.getDevice().getToken();
+				`/* Add code here to remove invalidToken from your database */ ` 
+			}
+		}
+	}
+}</code>
+
+====Working with the Feedback Service====
+See the [FeedbackService Feedback Service] page for more information.
