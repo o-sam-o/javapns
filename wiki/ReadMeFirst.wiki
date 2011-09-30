@@ -19,15 +19,15 @@ You may establish multiple, parallel connections to the same gateway or to multi
 <br />
 
 ==Sending Push Notifications==
-  * [PushNotificationBasic]
-  * [PushNotificationAdvanced]
+  * [PushNotificationBasic Basic push notification]
+  * [PushNotificationAdvanced Advanced push notification]
 
 You should regularly connect with the feedback service and fetch the current list of those devices that have reported failed-delivery attempts. The Java library parses the "raw" (binary) data-stream from the server and returns a list of iPhone tokens. The feedback server clears this list when it is sent... so once fetched, it cannot be re-fetched.
 
 <br />
 
 ==Getting device tokens where the notification delivery has failed==
-  * [FeedbackService]
+  * [FeedbackService Feedback service]
 
 <br />
 
