@@ -3,7 +3,7 @@
 
 = Basic Push Notification =
 
-Pushing a simple notification to a single device:
+====Pushing a simple notification to a single device====
 <code>
 import javapns.`*`;
 	
@@ -16,7 +16,16 @@ public class PushTest {
 	}
 }</code>
 
-Pushing a simple notification to multiple devices:
+The `alert` method's first parameter is the alert message itself.  The second parameter is a reference to your keystore;  it can be either a `java.io.File`, a `java.lang.String` (path to your keystore file), a `java.io.InputStream` or a `byte[]` array.  The third parameter is your keystore's password.  The fourth parameter selects the production (`true`) or sandbox (`false`) service.  The fifth parameter is a device token (64-bytes) to push the alert to.  
+
+<br />
+
+====Pushing a simple notification to multiple devices====
+
+If you need to push a notification to multiple devices, you should pass your list of device tokens directly to the alert method _(or any other push method you use)_, instead of creating a loop and invoking the alert method repetitively with each token.  This is because Apple strongly encourages users to send multiple notifications on a single connection, instead of opening and closing connections for each notification.  Passing your list of device tokens directly to javapns will allow the library to optimize the connection usage.
+
+Example:
+
 <code>
 import javapns.`*`;
 	
@@ -27,7 +36,10 @@ public class PushTest {
 		Push.alert("Hello World!", "keystore.p12", "keystore_password", false, devices);
 	}
 }</code>
-The `alert` method's first parameter is the alert message itself.  The second parameter is a reference to your keystore;  it can be either a `java.io.File`, a `java.lang.String` (path to your keystore file), a `java.io.InputStream` or a `byte[]` array.  The third parameter is your keystore's password.  The fourth parameter selects the production (`true`) or sandbox (`false`) service.  The fifth parameter is a device token (or a list of tokens) to push the alert to.
+
+<br />
+
+====Pushing other kinds of notifications====
 
 There are other kinds of predefined notifications you can send from the `Push` class, such as sound, badge or combined.  You can also build a payload manually by instantiating a `PushNotificationPayload` object, configure it according to your mobile application's needs, and push it using the `payload` method in the `Push` class.
 
@@ -35,10 +47,11 @@ Refer to the [Documentation javadoc] for more information about using the librar
 
 <br />
 
-===More detailed example===
+====More detailed example====
 A more detailed and functional example can be seen in the library's source code.  See class `javapns.test.NotificationTest`.
 
 <br />
+----
 
 ===Managing errors===
 
