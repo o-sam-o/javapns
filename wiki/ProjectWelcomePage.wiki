@@ -1,7 +1,7 @@
 #summary JavaPNS
 #labels Deprecated
 
-^Update! (28/09/2011) : JavaPNS 2.0 RELEASE CANDIDATE is now available for download.  Please let us know what you think!^
+^Update! (2011/10/06) : JavaPNS 2.0 (Final) is now available!^
 
 ====JavaPNS is a Java interface to the Apple Push Notification Service====
 
