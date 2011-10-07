@@ -3,7 +3,7 @@
 
 *JavaPNS* is a Java Library used to send [http://developer.apple.com/iphone/library/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html Apple Notification Service] (APNS) messages to iOS Apps
 
-This Java library provides a way to convert your notification to the “raw” (binary) data expected by the APNS and send using an asynchronous streaming socket over TLS (or SSL).
+This Java library provides a way to convert your notification to the “raw” (binary) data expected by the APNS and send using an asynchronous streaming socket over TLS (or SSL).  Essentially, you can send push notifications using a single line of code, or benefit from the library's flexible architecture to develop more elaborate push notification-based systems.
 
 ==Index==
   * [Documentation Documentation]
@@ -14,7 +14,6 @@ This Java library provides a way to convert your notification to the “raw” (
   * [CommandLineTools Command line test tools]
   * [Sandbox Useful information about the sandbox]
 
-You may establish multiple, parallel connections to the same gateway or to multiple gateway instances. But it is suggested that you retain your connection if sending many notifications. Although there is no hard limit to the number of gateway connections a provider can make, you should limit them to no more than 15. (APNs may consider connections that are rapidly and repeatedly established and torn down as a denial-of-service attack.) 
 
 <br />
 
@@ -26,8 +25,10 @@ You should regularly connect with the feedback service and fetch the current lis
 
 <br />
 
-==Getting device tokens where the notification delivery has failed==
-  * [FeedbackService Feedback service]
+==Managing delivery errors==
+  * *[PushNotificationBasic#Managing_errors Managing errors]*
+   * [PushNotificationBasic#Handling_error_responses Handling error responses]
+   * [FeedbackService Working with the Feedback Service]
 
 <br />
 
