@@ -26,8 +26,8 @@ You should regularly connect with the feedback service and fetch the current lis
 <br />
 
 ==Managing delivery errors==
-  * *[PushNotificationBasic#Managing_errors Managing errors]*
-   * [PushNotificationBasic#Handling_error_responses Handling error responses]
+  * *[ManagingPushErrors Managing push errors]*:
+   * [ManagingPushErrors#Handling_error_responses Handling error responses]
    * [FeedbackService Working with the Feedback Service]
 
 <br />
