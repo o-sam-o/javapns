@@ -7,9 +7,9 @@
 
 *javapns* is distributed as a standard `.jar` Java library which you will need to download.
 
-The latest public release can be downloaded from the [http://code.google.com/p/javapns/downloads/list Downloads page].
+The latest public release can be downloaded from the *[http://code.google.com/p/javapns/downloads/list Downloads]* page.
 
-The latest nightly build _(may not be production-ready)_ can be downloaded from [http://code.google.com/p/javapns/source/browse/#svn%2Fbranches%2Fjavapns2 SVN].
+The latest nightly build _(may not be production-ready)_ can be downloaded from [http://code.google.com/p/javapns/source/browse/trunk SVN].
 
 <br />
 
