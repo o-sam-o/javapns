@@ -3,6 +3,15 @@
 
 = Troubleshooting =
 
+===Get the latest version of JavaPNS===
+
+If you are experiencing issues with JavaPNS, first make sure that you are using the latest public release.  This is especially important for users of version 1.6 or earlier, as tons of fixes and enhancements have been made since then.  The latest public release can be downloaded from the *[http://code.google.com/p/javapns/downloads/list Downloads]* page.  Users migrating from version 1.x to 2.x will need to review the entire documentation wiki to learn about the significant changes the library went through between these two milestones.
+
+If the issues you are experiencing have been fixed (according to an issue status) after the last public release, you will need to get the most recent build from SVN.  Be aware that nightly builds might not be as stable as the public release because they have not been tested as much.  The latest nightly build can be downloaded from *[http://code.google.com/p/javapns/source/browse/trunk SVN]*.
+
+
+<br />
+
 ===Find answers in the documentation===
 
 The *[http://code.google.com/p/javapns/w/list wiki]* contains a lot of useful information to get started and to solve common issues.  The *[http://code.google.com/p/javapns/downloads/list javadoc]* also contains a lot of useful information about using the library.
@@ -71,7 +80,7 @@ If you have a specific problem with push notifications, search the project's [ht
 <br />
 
 ===Report an issues===
-If you are still experiencing a problem after following all of the above, add a new issue to the project's [http://code.google.com/p/javapns/issues/list Issues] database.  Please provide as much details as possible.  If your issue report is incomplete or not specific enough, it might take a lot more time for developers to help you out than if you provide a full and detailed report.
+If you are still experiencing a problem after following all of the above, add a new issue to the project's [http://code.google.com/p/javapns/issues/list Issues] database.  Please provide as much details as possible, including Java stack traces and Java code.  If your issue report is incomplete or not specific enough, it might take a lot more time for developers to help you out than if you provide a full and detailed report. 
 
 
 <br />
