@@ -9,7 +9,7 @@ Stable releases are published from time to time on the [http://code.google.com/p
 
 If you wish to try out the very latest build of JavaPNS _(may not be production-ready)_, you can download it from [http://code.google.com/p/javapns/source/browse/trunk SVN].
 
-====In the latest build (r255) but not yet in the latest stable release:====
+====In the [http://code.google.com/p/javapns/source/browse/trunk latest build]  but not yet in the latest stable release:====
  # Support for Newsstand
  # Improved handling of blank keystore passwords
  # Improved errors for payloads exceeding the maximum size allowed
