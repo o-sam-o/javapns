@@ -1,0 +1,25 @@
+#summary Enhancements and requests
+
+= Enhancements and requests =
+
+
+==What's already cooking...==
+
+Stable releases are published from time to time on the [http://code.google.com/p/javapns/downloads/list Downloads] page.  As new features are added to the project, they are committed to the trunk where they stay until they are properly tested and sufficiently stable to make it to the Downloads page.  This means that the very latest features and changes are sometimes available only in the current build from the trunk (SVN), and it remains so until they are fully tested.
+
+If you wish to try out the very latest build of JavaPNS _(may not be production-ready)_, you can download it from [http://code.google.com/p/javapns/source/browse/trunk SVN].
+
+====Enhancements in the latest build but not in the latest stable release:====
+ # Support for Newsstand
+ # Improved handling of blank keystore passwords
+ # Improved errors for payloads exceeding the maximum size allowed
+ # Ability to reject properties estimated to cause a payload to exceed its maximum size allowed
+ # Fix for sending 256-byte payloads
+ # New class for running specific tests related to reported issues
+
+<br />
+
+
+==Got an idea?==
+
+Do you have an idea or a request about how JavaPNS could be enhanced?  Let us know by commenting on this wiki page.  No promises we will implement your ideas of course (everyone's pretty busy with their own life), but it will definitely help steer development efforts.
