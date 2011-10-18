@@ -1,7 +1,13 @@
 #summary Feedback Basic Example
 #labels Deprecated
 
-_*Note:* feedback service seems to only work on the production url._
+----
+<code> *IMPORTANT*: 
+This page is *deprecated* and therefore contains outdated and/or invalid information. 
+Please go back to the [http://code.google.com/p/javapns/ Project Home] to get access to the latest version and information.</code>
+----
+<br >
+
 
 <code> // Get !FeedbackServiceManager Instance
 !FeedbackServiceManager feedbackManager = !FeedbackServiceManager.getInstance();
