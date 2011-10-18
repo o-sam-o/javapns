@@ -1,5 +1,12 @@
 #summary TroubleshootingTips
 #labels Deprecated
+----
+<code> *IMPORTANT*: 
+This page is *deprecated* and therefore contains outdated and/or invalid information. 
+Please go back to the [http://code.google.com/p/javapns/ Project Home] to get access to the latest version and information.</code>
+----
+<br >
+
 == General suggestions ==
 
 Create a standalone java app that tests your configuration.
