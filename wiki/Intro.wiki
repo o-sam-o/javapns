@@ -1,6 +1,14 @@
 #summary Read me first
 #labels Deprecated
 
+----
+<code> *IMPORTANT*: 
+This page is *deprecated* and therefore contains outdated and/or invalid information. 
+Please go back to the [http://code.google.com/p/javapns/ Project Home] to get access to the latest version and information.</code>
+----
+<br >
+
+
 JavaPNS is a Java Library used to send [http://developer.apple.com/iphone/library/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html Apple Notification Service] (APNS) messages to iPhone Apps
 
 This Java library provides a way to convert your notification to the “raw” (binary) data expected by the APNS and send using an asynchronous streaming socket over TLS (or SSL).
