@@ -16,6 +16,7 @@ If you wish to try out the very latest build of JavaPNS _(may not be production-
  # Ability to reject properties estimated to cause a payload to exceed its maximum size allowed
  # Fix for sending 256-byte payloads
  # New class for running specific tests related to reported issues
+ # Support for effectively disabling notification storage using payload.setExpiry(0) as per Apple specs
 
 <br />
 
