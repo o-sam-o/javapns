@@ -1,5 +1,12 @@
 #summary Basic Example
 #labels Deprecated
+----
+<code> *IMPORTANT*: 
+This page is *deprecated* and therefore contains outdated and/or invalid information. 
+Please go back to the [http://code.google.com/p/javapns/ Project Home] to get access to the latest version and information.</code>
+----
+<br >
+
 <code> // Setup up a simple message
 !PayLoad aPayload = new !PayLoad(); 
 aPayload.addBadge( 1 );
