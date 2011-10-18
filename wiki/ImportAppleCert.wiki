@@ -1,5 +1,13 @@
 #summary Pre-1.6 version of importing Apple SSL Cert into Keystore (not to be confused with Java version 1.6)
 #labels Deprecated
+----
+<code> *IMPORTANT*: 
+This page is *deprecated* and therefore contains outdated and/or invalid information. 
+Please go back to the [http://code.google.com/p/javapns/ Project Home] to get access to the latest version and information.</code>
+----
+<br >
+
+
 = Overview =
 To get the keystore working... (In Version 1.6 and later.. .this is NOT REQUIRED!)
 
