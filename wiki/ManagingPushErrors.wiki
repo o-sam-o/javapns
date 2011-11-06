@@ -11,7 +11,14 @@ The Apple Push Notification System uses two different error reporting systems wh
 ==Handling error responses==
 All push methods in the `javapns.Push` class return a list of `javapns.notification.PushedNotification` objects.  A `PushedNotification` object is created for each individual message (ie one per payload per device) the library pushes toward Apple servers, and encapsulates useful details about each attempt.  
 
-To find out if a push was successfully sent to Apple and that Apple did not return any error-response packet, simply invoke the `pushedNotification.isSuccessful()` method.  More advanced users can investigate the actual error by checking if an exception was thrown (using `pushedNotification.getException()`) or if an error-response packet was received (using `pushedNotification.getResponse()`).
+To find out if a push was successfully sent to Apple and that Apple did not return any error-response packet, simply invoke the `pushedNotification.isSuccessful()` method.  A notification might *not* be successful if any of these conditions occur:
+
+ * the library rejected the token you provided because of obvious specs violations _(ex: token not 64-bytes long, etc.)_
+ * the library rejected the payload you provided because of obvious specs violations _(ex: payload too large, etc.)_
+ * an error occurred with your certificate or keystore _(ex: wrong password, invalid keystore format, etc.)_
+ * a valid error-response packet was received from Apple servers
+
+Beyond the simplistic `isSuccessful()` result, you will probably want to know what the actual problem was.  To do so, invoke `pushedNotification.getException()` to get an exception describing why the notification was not successful.  Printing the exception to the console will probably help you understand what went wrong very quickly.  If the error was reported by Apple servers through an error-response packet, you can get access to the actual response packet by invoking `pushedNotification.getResponse()`.
 
 Managing errors after pushing a simple notification to multiple devices:
 <code>
@@ -21,7 +28,10 @@ import javapns.notification.`*`;
 public class PushTest {
 
 	public static void main(String`[]` args) {
-		String`[]` devices = {"token 1", "token 2"}; 
+
+		String`[]` devices = {"MyToken111111111111111111111111111111111111111111111111111111111", 
+				   "MyToken222222222222222222222222222222222222222222222222222222222"}; 
+
 		List<PushedNotification> notifications = Push.alert("Hello World!", 
 						"keystore.p12", "keystore_password", false, devices); 
 
@@ -34,6 +44,10 @@ public class PushTest {
 			} else {
 				String invalidToken = notification.getDevice().getToken();
 				`/* Add code here to remove invalidToken from your database */ ` 
+
+				`/* Find out more about what the problem was */ ` 
+				Exception theProblem = notification.getException();
+				theProblem.printStackTrace();
 			}
 		}
 	}
