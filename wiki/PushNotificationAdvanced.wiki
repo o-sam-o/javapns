@@ -32,6 +32,32 @@ To send a notification to hundreds or thousands of devices, use the following co
 
 <br />
 
+===Creating a connection pool===
+
+*javapns* includes tools for creating connection pools.  A connection pool is a group of multi-threaded parallel live connections to APNS which simply wait for you to queue notifications to push.  The pool dispatches new notifications to connections on a rotation basis.
+
+To create a pool (and queue a simple notification), use the following code:
+<code>public void send (String token, Object keystore, String password, boolean production) {
+
+	`/*` Gather communication details `*/` 
+	AppleNotificationServer server = new AppleNotificationServerBasicImpl(keystore, password, production);
+
+	`/*` Prepare a simple payload to push `*/` 
+	Payload payload = PushNotificationPayload.alert("Hello World!");
+
+	`/*` Create a connection pool with 3 multi-threaded connections `*/` 
+	NotificationThreads pool = new NotificationThreads(server, 3);
+
+	`/*` Start the connection pool `*/` 
+	pool.start();
+
+	`/*` Queue a notification to push `*/` 
+	pool.queue(payload, token);
+
+}</code>
+
+<br />
+
 ===Configuring a proxy===
 To set a proxy for all connections initiated by javapns, use the following code:
 <code>pushNotificationManager.setProxy(host, port);</code>
