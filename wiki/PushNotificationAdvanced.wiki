@@ -5,7 +5,7 @@
 
 ===Sending large amounts of notifications (multi-threading)===
 
-*javapns* includes tools for streaming large number of notifications safely and efficiently using multiple parallel threads.
+*JavaPNS* includes tools for streaming large number of notifications safely and efficiently using multiple parallel threads.
 
 To send a notification to hundreds or thousands of devices, use the following code:
 <code>public void send (List<Device> devices, Object keystore, String password, boolean production) {
@@ -34,7 +34,7 @@ To send a notification to hundreds or thousands of devices, use the following co
 
 ===Creating a connection pool===
 
-*javapns* includes tools for creating connection pools.  A connection pool is a group of multi-threaded parallel live connections to APNS which simply wait for you to queue notifications to push.  The pool dispatches new notifications to connections on a rotation basis.
+*JavaPNS* includes tools for creating connection pools.  A connection pool is a group of multi-threaded parallel live connections to APNS which simply wait for you to queue notifications to push.  The pool dispatches new notifications to connections on a rotation basis.
 
 To create a pool (and queue a simple notification), use the following code:
 <code>public void send (String token, Object keystore, String password, boolean production) {
@@ -59,18 +59,22 @@ To create a pool (and queue a simple notification), use the following code:
 <br />
 
 ===Configuring a proxy===
-To set a proxy for all connections initiated by javapns, use the following code:
+To set a proxy for all connections initiated by JavaPNS, use the following code:
 <code>pushNotificationManager.setProxy(host, port);</code>
 
 <br />
 
 ===Enhanced notification format===
-The Apple Push Notification System describes an optional enhanced notification format which provides support for various additional options (see [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html this page]).  javapns 2.0 always uses the enhanced notification format when pushing notifications to Apple servers.  To customize the expiry option provided by the enhanced notification format, you must first get a Payload object and invoke `payload.setExpiry(long)` to customize its value (default is 1 day).  Error-response packets, if any are received, are attached to their related `PushedNotification` objects, allowing you to analyze notification results in context.
+The Apple Push Notification System describes an optional enhanced notification format which provides support for various additional options (see [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingWIthAPS/CommunicatingWIthAPS.html this page]).  By default,  JavaPNS uses the enhanced notification format when pushing notifications to Apple servers.  
+
+To customize the expiry option provided by the enhanced notification format, you must first get a Payload object and invoke `payload.setExpiry(long)` to customize its value (default is 1 day).  Error-response packets, if any are received, are attached to their related `PushedNotification` objects, allowing you to analyze notification results in context.
+
+If for any reason you wish to switch to the simple notification format, you can do so by invoking `PushNotificationManager.setEnhancedNotificationFormatEnabled(false);`.  When using the simple format, payload identifiers and expiry are ignored, and the error-response packet reader is disabled.  It is generally not recommended to turn off the enhanced notification format because using it provides much better error detection.
 
 <br />
 
 ===More control over default settings===
-The methods in `javapns.Push` accept a boolean parameter that tells javapns to use Apple's production servers or not.  If `true`, javapns will use the production services (`gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`); otherwise it will use the sandbox services (`gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`).
+The methods in `javapns.Push` accept a boolean parameter that tells JavaPNS to use Apple's production servers or not.  If `true`, javapns will use the production services (`gateway.push.apple.com:2195` and `feedback.push.apple.com:2196`); otherwise it will use the sandbox services (`gateway.sandbox.push.apple.com:2195` and `feedback.sandbox.push.apple.com:2196`).
 
 To work around these predefined settings, take a look at the following code:
 <code>public void send (List<Device> devices, Object keystore, String password, String appleHost, int applePort) {
@@ -97,4 +101,4 @@ To work around these predefined settings, take a look at the following code:
 
 ===OTA MDM technology support===
 
-javapns includes basic support for Apple's Over-The-Air (OTA) MDM technology. The intent of this addition is to make javapns even more useful to enterprise customers, thus improving widespread usage of this library. OTA MDM howerver is not the primary target of javapns (Push Notification is), and consequently mdm support is provided as is, without serious testing. If you are involved in MDM, please feel free to get involved in this project so this area can be enhanced.
+JavaPNS includes basic support for Apple's Over-The-Air (OTA) MDM technology. The intent of this addition is to make JavaPNS even more useful to enterprise customers, thus improving widespread usage of this library. OTA MDM howerver is not the primary target of JavaPNS (Push Notification is), and consequently mdm support is provided as is, without serious testing. If you are involved in MDM, please feel free to get involved in this project so this area can be enhanced.
