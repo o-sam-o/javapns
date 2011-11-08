@@ -24,6 +24,8 @@ If you wish to try out the very latest build of JavaPNS _(may not be production-
 
 LATER BUILDS:
 
+ # new Push.test() method for quickly pushing a payload with useful debug information
+ # basic NotificationTest now uses Push.test() payload
  # Ability to disable the enhanced notification format (ie revert to simple format)
  # Ability to dump the last raw APNS message and certificate chain to files (for debugging purposes)
  # Ability to easily turn on verbose debugging from other classes
