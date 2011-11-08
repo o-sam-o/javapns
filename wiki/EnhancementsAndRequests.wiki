@@ -24,7 +24,11 @@ If you wish to try out the very latest build of JavaPNS _(may not be production-
 
 LATER BUILDS:
 
-(None so far)
+# Ability to disable the enhanced notification format (ie revert to simple format)
+# Ability to dump the last raw APNS message and certificate chain to files (for debugging purposes)
+# Ability to easily turn on verbose debugging from other classes
+# Improved javadoc
+
 ----
 
 <br />
