@@ -57,6 +57,8 @@ Most problems for first-time users revolve around the required SSL certificate.
  * make absolutely sure you follow precisely the procedure to generate and export your certificate
  * verify that the certificate you are providing to javapns (inside a keystore file) was generated for the same Apple service you are using (sandbox or production) - see the [PreparingCertificates Preparing certificates] page
 
+*Important*: you will not get any error if you try to push a notification through an APNS server that does not match your certificate (sandbox or production), either server-side or application-side, but your notification will never make it to your mobile application.  You *must* be very careful that the certificate provided to JavaPNS matches the one currently built into your mobile application, *and* that it matches the APNS server you are choosing to use (sandbox or production).  Any failure to match these three will result in missing notifications.
+
 <br />
 
 ===Check the date and time===
@@ -71,6 +73,9 @@ You can also find out if one `PushedNotification` was successful by calling:
 <code>boolean success = yourPushedNotification.isSuccessful();</code>
 
 You should also invoke `javapns.Push.feedback(...)` periodically to get a list of devices Apple believes to be inactive.
+
+*Refer to the [ManagingPushErrors Managing push errors] wiki page to learn how to deal with errors.*
+
 
 <br />
 
