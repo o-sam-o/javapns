@@ -24,6 +24,7 @@ If you wish to try out the very latest build of JavaPNS _(may not be production-
 
 LATER BUILDS:
 
+ # Much better exception handling and propagation throughout the library
  # New Push.test() method for quickly pushing a payload with useful debug information
  # Basic NotificationTest now uses Push.test() payload instead of Hello World
  # Ability to disable the enhanced notification format (ie revert to simple format)
