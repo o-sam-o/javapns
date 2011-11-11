@@ -24,15 +24,20 @@ If you wish to try out the very latest build of JavaPNS _(may not be production-
 
 LATER BUILDS:
 
+ # Much simpler methods for exploiting the multithread and queue capabilities of JavaPNS
  # Much better exception handling and propagation throughout the library
  # New Push.test() method for quickly pushing a payload with useful debug information
- # Basic NotificationTest now uses Push.test() payload instead of Hello World
+ # NotificationTest now uses Push.test() payload instead of Hello World
  # All Push methods now accept devices as a list or array of tokens of devices
  # New Push.payload method that facilitates the use of multithreading
+ # New Push.queue method that facilitates the use of push queues
  # Ability to disable the enhanced notification format (ie revert to simple format)
  # Ability to dump the last raw APNS message and certificate chain to files (for debugging purposes)
  # Ability to easily turn on verbose debugging from other classes
  # New tool for validating keystores
+ # New basic safeguards against pushing empty payloads or null sounds, alerts or combined payloads
+ # More detailed printouts of PushedNotifications, now including exception details if any
+ # Less constructors in NotificationThread/s, and made the other ones more flexible
  # Deprecated DeviceFactory-related classes and methods
  # Improved javadoc
 
