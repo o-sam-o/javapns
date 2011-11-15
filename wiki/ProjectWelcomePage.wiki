@@ -1,17 +1,19 @@
 #summary JavaPNS
 #labels Deprecated
 
-^Update! (2011/10/06) : JavaPNS 2.0 (Final) is now available!^
+^Update! (2011/11/16) : JavaPNS 2.1 is now available!^
+
+={{{JavaPNS}}}=
 
 ====JavaPNS is a Java interface to the Apple Push Notification Service====
 
-Welcome to the JavaPNS project!   This fully-featured Java library allows developers to push notifications to iOS devices _(iPhone, iPod, iPad, etc.)_ through the Apple Push Notification Service using a simple yet powerful set of tools.
+Welcome to the JavaPNS project, home of the most user-friendly and powerful Java library for APNS!   This fully-featured Java library allows developers to push notifications to iOS devices _(iPhone, iPod, iPad, etc.)_ through the Apple Push Notification Service using a simple yet powerful set of tools.
 
 <table width="100%">
 
 <td valign="top" border="0">
 ====Capabilities===
- * Start sending notifications using a single line of code
+ * Start sending notifications using *a single line of code*
  * Get started quickly with smart default settings
  * Easily switch between Apple's sandbox or production services
  * Use predefined simple notifications, or create custom and/or complex payloads
@@ -20,8 +22,12 @@ Welcome to the JavaPNS project!   This fully-featured Java library allows develo
  * Examine push notification results immediately and accurately
  * Query the Feedback Service with a single line of code to find inactive devices
  * Auto-resend notifications ignored by Apple servers after an error 
+ * Push notifications to Apple's Newsstand application with one line of code
+ * Setup connection pools (queues) in no time
  * Use bundled command-line tools to test push notification and feedback
- * Build upon JavaPNS's API to extend its functionalities (such as JPA support)
+ * Rely on the library's strong error and exception management
+ * Get started quickly thanks to the built-in safeguards against common mistakes
+ * Build upon JavaPNS's developer-friendly API to extend its functionalities
  * Learn everything about the library though its complete javadoc
  * _and much more!_
 </td>
@@ -34,4 +40,12 @@ Welcome to the JavaPNS project!   This fully-featured Java library allows develo
  # Meet the [GeneralRequirements requirements]<br /><br />
  # Push [PushNotificationBasic notifications]
 </b>
+
+<br /><br />
+
+====Useful links====
+ * [http://javapns.googlecode.com/svn/trunk/doc/index.html JavaPNS javadoc]<br /><br />
+ * [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Introduction/Introduction.html%23//apple_ref/doc/uid/TP40008194-CH1-SW1 Manual on APNS]<br /><br />
+ * [http://code.google.com/p/javapns/wiki/EnhancementsAndRequests Make suggestions...]
+
 </td></table>
