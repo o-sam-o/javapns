@@ -10,51 +10,47 @@
 To send a notification to hundreds or thousands of devices, use the following code:
 <code>public void send (List<Device> devices, Object keystore, String password, boolean production) {
 
-	`/*` Gather communication details `*/` 
-	AppleNotificationServer server = new AppleNotificationServerBasicImpl(keystore, password, production);
-
 	`/*` Prepare a simple payload to push `*/` 
 	Payload payload = PushNotificationPayload.alert("Hello World!");
 
-	`/*` Create 30 threads to spread the work evenly `*/` 
-	NotificationThreads work = new NotificationThreads(server, payload, devices, 30); 
+	`/*` Decide how many threads you want to create and use `*/` 
+	int threads = 30;
 
-	`/*` Start all work threads simultaneously `*/` 
-	work.start();
-
-	`/*` Wait for all threads to finish their work `*/` 
-	work.waitForAllThreads();
-
-	`/*` Get a list of all pushed notifications `*/` 
-	List<PushedNotifications> notifications = work.getPushedNotifications();
+	`/*` Start threads, wait for them, and get a list of all pushed notifications `*/` 
+	List<PushedNotifications> notifications = Push.payload(payload, keystore, password, threads, devices);
 
 }</code>
+
+Note: the multithread payload method above will return only once all threads have finished pushing notifications. If you do not want to wait for them to complete, run the code above inside a separate Thread (example: {{{new Thread() {public void run() {...}}.start();}}}).
 
 <br />
 
-===Creating a connection pool===
+===Creating a push queue (connection pool)===
 
-*JavaPNS* includes tools for creating connection pools.  A connection pool is a group of multi-threaded parallel live connections to APNS which simply wait for you to queue notifications to push.  The pool dispatches new notifications to connections on a rotation basis.
+*JavaPNS* includes tools for creating push queues (connection pools).  A queue is a group of multi-threaded parallel live connections to APNS which simply wait for you to queue notifications to push.  The queue dispatches new notifications to threads and connections on a rotation basis.
 
-To create a pool (and queue a simple notification), use the following code:
+To create a queue (and add a simple notification), use the following code:
 <code>public void send (String token, Object keystore, String password, boolean production) {
-
-	`/*` Gather communication details `*/` 
-	AppleNotificationServer server = new AppleNotificationServerBasicImpl(keystore, password, production);
 
 	`/*` Prepare a simple payload to push `*/` 
 	Payload payload = PushNotificationPayload.alert("Hello World!");
 
-	`/*` Create a connection pool with 3 multi-threaded connections `*/` 
-	NotificationThreads pool = new NotificationThreads(server, 3);
+	`/*` Decide how many threads you want your queue to use `*/` 
+	int threads = 30;
 
-	`/*` Start the connection pool `*/` 
-	pool.start();
+	`/*` Create the queue `*/` 
+	PushQueue queue = Push.queue(keystore, password, production, threads);
 
-	`/*` Queue a notification to push `*/` 
-	pool.queue(payload, token);
+	`/*` Start the queue (all threads and connections and initiated) `*/` 
+	queue.start();
+
+	`/*` Add a notification for the queue to push `*/` 
+	queue.add(payload, token);
 
 }</code>
+
+Note: if you do not start the queue manually (like above), the queue will start itself automatically on the first call to an `add` method.
+
 
 <br />
 
