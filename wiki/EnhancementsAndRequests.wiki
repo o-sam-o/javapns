@@ -11,7 +11,7 @@ If you wish to try out the very latest build of JavaPNS _(may not be production-
 
 ====In the [http://code.google.com/p/javapns/source/browse/trunk latest build]  but not yet in the latest stable release:====
 ----
-2.1 BETA 1:
+2.1 RELEASE CANDIDATE:
  # Support for Newsstand
  # Improved handling of blank keystore passwords
  # Improved errors for payloads exceeding the maximum size allowed
@@ -21,9 +21,6 @@ If you wish to try out the very latest build of JavaPNS _(may not be production-
  # Support for effectively disabling notification storage using payload.setExpiry(0) as per Apple specs
  # Ability to create connection pools
  # Simplified push notification error management
-
-LATER BUILDS:
-
  # Much simpler methods for exploiting the multithread and queue capabilities of JavaPNS
  # Much better exception handling and propagation throughout the library
  # New Push.test() method for quickly pushing a payload with useful debug information
@@ -40,6 +37,9 @@ LATER BUILDS:
  # Less constructors in NotificationThread/s, and made the other ones more flexible
  # Deprecated DeviceFactory-related classes and methods
  # Improved javadoc
+
+LATER BUILDS:
+
 
 ----
 
