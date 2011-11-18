@@ -40,6 +40,7 @@ If you create custom payloads yourself, you can use the following methods to pus
  # {{{payload (payload, keystore, password, production, devices)}}}_: push a single payload to devices_
  # {{{payload (payload, keystore, password, production, numberOfThreads, devices)}}}_: use the built-in multithreaded transmission engine to push a single payload to lots of devices using n threads_
  # {{{payloads (keystore, password, production, payloadDevicePairs)}}}_: push payloads to paired devices_
+ # {{{payloads (keystore, password, production, numberOfThreads, payloadDevicePairs)}}}_: use the built-in multithreaded transmission engine to push payloads to paired devices_
 
 <br />
 
