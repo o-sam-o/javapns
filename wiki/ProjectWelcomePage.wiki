@@ -16,7 +16,7 @@ Welcome to the JavaPNS project, home of the most user-friendly and powerful Java
  * Easily switch between Apple's sandbox or production services
  * Use predefined simple notifications, or create custom and/or complex payloads
  * Benefit from the enhanced notification format
- * Send thousands of notifications using the built-in multi-threaded transmission engine
+ * Send thousands of notifications using the built-in multithreaded transmission engine
  * Examine push notification results immediately and accurately
  * Query the Feedback Service with a single line of code to find inactive devices
  * Auto-resend notifications ignored by Apple servers after an error 
@@ -26,7 +26,7 @@ Welcome to the JavaPNS project, home of the most user-friendly and powerful Java
  * Rely on the library's strong error and exception management
  * Get started quickly thanks to the built-in safeguards against common mistakes
  * Build upon JavaPNS's developer-friendly API to extend its functionalities
- * Learn everything about the library though its complete javadoc
+ * Learn everything about the library through its complete javadoc
  * _and much more!_
 </td>
 
