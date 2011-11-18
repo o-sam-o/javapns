@@ -33,4 +33,4 @@ You should regularly connect with the feedback service and fetch the current lis
 <br />
 
 ==Upgrading from javapns 1.x==
-javapns 2.0 has been completely reengineered to be more flexible and adapt to a larger number of projects.  Consequently, many classes have been refactored, replaced by interfaces where possible, and other changes.  Please take some time to look at the javadoc for version 2.0 so you can make the necessary changes in your existing code.  If your use of javapns is somewhat basic, you should look at the new `javapns.Push` class which is the new preferred and much simpler way of quickly pushing notifications.
+JavaPNS 2 has been completely reengineered to be more flexible and adapt to a larger number of projects.  Consequently, many classes have been refactored, replaced by interfaces where possible, and other changes.  Please take some time to look at the javadoc for version 2 so you can make the necessary changes in your existing code.  If your use of JavaPNS is somewhat basic, you should look at the new `javapns.Push` class which is the new preferred and much simpler way of quickly pushing notifications.
