@@ -1,6 +1,6 @@
 #summary JavaPNS
 #labels Deprecated
-
+ 
 =JavaPNS 2.1=
 
 ====JavaPNS is a Java library to send notifications through the Apple Push Notification Service====
