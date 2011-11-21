@@ -94,6 +94,18 @@ The Apple Push Notification System is deceptively tricky to use, in that it has 
 
 <br /><br />
 
+====Frequently Asked Questions====
+
+ # *How to send a different payload for each device?*: if each device should receive a different payload (_even slightly different_), you will need to create a `PayloadPerDevice` object for each device along with the payload it should receive.  You can then use the `Push.payloads(...)` methods to push your payloads.  Example:  <code>List<PayloadPerDevice> payloadDevicePairs = new Vector<PayloadPerDevice>();
+ payloadDevicePairs.add(new PayloadPerDevice(PushNotificationPayload.alert("Hello World 1!"), myDevice1));
+payloadDevicePairs.add(new PayloadPerDevice(PushNotificationPayload.alert("Hello World 2!"), myDevice2));
+payloadDevicePairs.add(new PayloadPerDevice(PushNotificationPayload.alert("Hello World 3!"), myDevice3));
+ 
+Push.payloads("keystore.p12", "keystore_password", false, payloadDevicePairs);</code>
+
+<br /><br />
+
+
 ====More information====
 
 To learn more about JavaPNS, you can take a look at the source code for the `javapns.test.NotificationTest` class.  This class contains examples for various push notification scenarios.
