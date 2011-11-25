@@ -3,6 +3,31 @@
 
 = Advanced Push Notification =
 
+===Building payloads===
+
+*JavaPNS*'s `Push` class provides easy ways of pushing simple notifications (such as alerts, badges, sounds, etc.) which spare you from creating payloads yourself.  As you create more elaborate mobile applications though, you will most likely want to customize your notifications by adding custom properties to payloads you push.  Instead of using the simple one-line push methods in the `Push` class (alert, badge, sound, combined, etc.), you can create a payload first, customize it the way you want, and push it using one of the `Push.payload` methods.  
+
+To create a custom payload and push it, see the following code:
+<code>public void send (List<Device> devices, Object keystore, String password, boolean production) {
+
+	`/*` Build a blank payload to customize `*/` 
+	Payload payload = PushNotificationPayload.complex();
+
+	`/*` Customize the payload `*/` 
+	payload.addAlert("Hello World!");
+	payload.addCustomDictionary("mykey1", "My Value 1");
+	payload.addCustomDictionary("mykey2", 2);
+	// etc.
+
+	`/*` Push your custom payload `*/` 
+	List<PushedNotifications> notifications = Push.payload(payload, keystore, password, production, devices);
+
+}</code>
+
+Refer to the javadoc for [http://javapns.googlecode.com/svn/trunk/doc/javapns/notification/Payload.html Payload], [http://javapns.googlecode.com/svn/trunk/doc/javapns/notification/PushNotificationPayload.html PushNotificationPayload] and [http://javapns.googlecode.com/svn/trunk/doc/javapns/notification/NewsstandNotificationPayload.html NewsstandNotificationPayload] for more information on methods available on a `Payload` object.
+
+<br />
+
 ===Sending large amounts of notifications (multi-threading)===
 
 *JavaPNS* includes tools for streaming large number of notifications safely and efficiently using multiple parallel threads.
@@ -17,7 +42,7 @@ To send a notification to hundreds or thousands of devices, use the following co
 	int threads = 30;
 
 	`/*` Start threads, wait for them, and get a list of all pushed notifications `*/` 
-	List<PushedNotifications> notifications = Push.payload(payload, keystore, password, threads, devices);
+	List<PushedNotifications> notifications = Push.payload(payload, keystore, password, production, threads, devices);
 
 }</code>
 
