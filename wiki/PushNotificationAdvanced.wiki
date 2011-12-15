@@ -11,7 +11,7 @@ To create a custom payload and push it, see the following code:
 <code>public void send (List<Device> devices, Object keystore, String password, boolean production) {
 
 	`/*` Build a blank payload to customize `*/` 
-	Payload payload = PushNotificationPayload.complex();
+	PushNotificationPayload payload = PushNotificationPayload.complex();
 
 	`/*` Customize the payload `*/` 
 	payload.addAlert("Hello World!");
@@ -20,7 +20,7 @@ To create a custom payload and push it, see the following code:
 	// etc.
 
 	`/*` Push your custom payload `*/` 
-	List<PushedNotifications> notifications = Push.payload(payload, keystore, password, production, devices);
+	List<PushedNotification> notifications = Push.payload(payload, keystore, password, production, devices);
 
 }</code>
 
@@ -36,13 +36,13 @@ To send a notification to hundreds or thousands of devices, use the following co
 <code>public void send (List<Device> devices, Object keystore, String password, boolean production) {
 
 	`/*` Prepare a simple payload to push `*/` 
-	Payload payload = PushNotificationPayload.alert("Hello World!");
+	PushNotificationPayload payload = PushNotificationPayload.alert("Hello World!");
 
 	`/*` Decide how many threads you want to create and use `*/` 
 	int threads = 30;
 
 	`/*` Start threads, wait for them, and get a list of all pushed notifications `*/` 
-	List<PushedNotifications> notifications = Push.payload(payload, keystore, password, production, threads, devices);
+	List<PushedNotification> notifications = Push.payload(payload, keystore, password, production, threads, devices);
 
 }</code>
 
@@ -58,7 +58,7 @@ To create a queue (and add a simple notification), use the following code:
 <code>public void send (String token, Object keystore, String password, boolean production) {
 
 	`/*` Prepare a simple payload to push `*/` 
-	Payload payload = PushNotificationPayload.alert("Hello World!");
+	PushNotificationPayload payload = PushNotificationPayload.alert("Hello World!");
 
 	`/*` Decide how many threads you want your queue to use `*/` 
 	int threads = 30;
@@ -104,7 +104,7 @@ To work around these predefined settings, take a look at the following code:
 	AppleNotificationServer customServer = new AppleNotificationServerBasicImpl(keystore, password, ConnectionToAppleServer.KEYSTORE_TYPE_PKCS12, appleHost, applePort);
 
 	`/*` Prepare a simple payload to push `*/` 
-	Payload payload = PushNotificationPayload.alert("Hello World!");
+	PushNotificationPayload payload = PushNotificationPayload.alert("Hello World!");
 
 	`/*` Create a push notification manager `*/` 
 	PushNotificationManager pushManager = new PushNotificationManager();
@@ -113,7 +113,7 @@ To work around these predefined settings, take a look at the following code:
 	pushManager.initializeConnection(customServer);
 
 	`/*` Push notifications and get the results `*/` 
-	List<PushedNotifications> notifications = pushManager.sendNotifications(payload, devices);
+	List<PushedNotification> notifications = pushManager.sendNotifications(payload, devices);
 
 }</code>
 
