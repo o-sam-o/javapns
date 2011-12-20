@@ -31,19 +31,19 @@ Welcome to the JavaPNS project, home of the most user-friendly and powerful Java
 </td>
 
 <td valign="top">
-<br /><br />
+<br />
 =Get started=
 <b>
- # Read the [Documentation documentation]<br /><br />
- # Meet the [GeneralRequirements requirements]<br /><br />
+ # Read the [Documentation documentation]<br />
+ # Meet the [GeneralRequirements requirements]<br />
  # Push [PushNotificationBasic notifications]
 </b>
 
-<br /><br />
+<br />
 
 ====Useful links====
- * [http://javapns.googlecode.com/svn/trunk/doc/index.html JavaPNS javadoc]<br /><br />
- * [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Introduction/Introduction.html%23//apple_ref/doc/uid/TP40008194-CH1-SW1 Manual on APNS]<br /><br />
+ * [http://javapns.googlecode.com/svn/trunk/doc/index.html JavaPNS javadoc]<br />
+ * [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Introduction/Introduction.html%23//apple_ref/doc/uid/TP40008194-CH1-SW1 Manual on APNS]<br />
  * [http://code.google.com/p/javapns/wiki/EnhancementsAndRequests Make suggestions...]
 
 </td></table>
