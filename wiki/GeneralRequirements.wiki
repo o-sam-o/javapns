@@ -3,7 +3,13 @@
 
 =Requirements=
 
-==REQUIREMENT #1:  javapns library==
+=#1:  Java Runtime Environment=
+
+*JavaPNS* requires Java 1.5 or later.
+
+<br />
+
+=#2:  JavaPNS library=
 
 *JavaPNS* is distributed as a standard `.jar` Java library which you will need to download.
 
@@ -13,7 +19,7 @@ The latest nightly build _(may not be production-ready)_ can be downloaded from 
 
 <br />
 
-==REQUIREMENT #2:    Java dependencies==
+=#3:    Java dependencies=
 
 A few required open-source libraries will need to be included in the classpath to use JavaPNS:
 
@@ -22,12 +28,12 @@ A few required open-source libraries will need to be included in the classpath t
   
 <br />
 
-== REQUIREMENT #3:   SSL Certificate (from Apple) ==
+=#4:   SSL Certificate (from Apple)=
 The SSL Certificate is created by Apple from the App ID.  This step is the biggest source of problems for first-time users.  SSL certificates need to be generated very carefully, and any deviation from the procedure usually results in unexpected results.  See the *[PreparingCertificates Preparing certificates]* page for all the details.
 
 <br />
 
-== REQUIREMENT #4:   Device Token ==
+=#5:   Device Token=
 A Device Token is provided by the iOS API with the following code:
 
 {{{(void)application:(UIApplication )application didRegisterForRemoteNotificationsWithDeviceToken:(NSData)deviceToken}}}
@@ -40,7 +46,8 @@ Example:
 <br />
 <br />
 
-==REQUIREMENT #5:    iOS App ==
+=#6:    iOS App=
 Badges and alerts will appear if the App is not running and the App is registered with the `PushNotificationService`.
-
 All other notifications need to be handled by the App while the App is running.
+
+Note: JavaPNS works with APNS only!  It is not designed to work with Android or other platforms.
