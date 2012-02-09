@@ -11,11 +11,7 @@ If you wish to try out the very latest build of JavaPNS _(may not be production-
 
 ====In the [http://code.google.com/p/javapns/source/browse/trunk latest build]  but not yet in the latest stable release:====
 ----
- # More flexible proxy settings
- # Ability to create payloads from pre-formatted JSON strings
- # Access timestamps returned by the Feedback Service
- # Fixes in NotificationThreads related to thread-safety
- # Get exceptions from the Feedback Service (were previously not thrown)
+ # ...
 
 
 
