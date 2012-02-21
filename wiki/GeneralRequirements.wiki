@@ -3,13 +3,27 @@
 
 =Requirements=
 
-=#1:  Java Runtime Environment=
+=#1:  Understand the basics first...=
 
-*JavaPNS* requires Java 1.5 or later.
+*JavaPNS* is a library that facilitates communication with the *Apple Push Notification System* (APNS).  Your very first step in working with APNS should be to read Apple's documentation about that technology.  Most questions from first-time users are already answered in the APNS manual.  Refer to the [Documentation] page to find links to Apple documentation.
+
+You also need to be familiar with the basics of your particular execution environment.  For example, if you choose to use JavaPNS in a web application that will be running inside Apache Tomcat, you first need to get a little familiar with Tomcat to understand where to put Java libraries so your web application can use them.
 
 <br />
 
-=#2:  JavaPNS library=
+=#2:  Java Runtime Environment=
+
+*JavaPNS* requires Java 1.5 or later.
+
+<code> *IMPORTANT*: 
+One of JavaPNS's dependencies (BouncyCastle) is reportedly not compatible with the Google App Engine. 
+That execution environment is therefore not supported.</code>
+
+First-time users that have not yet read Apple's documentation on APNS often wonder if a web server is required to use JavaPNS.  There is no such requirement.  JavaPNS can be used within a web application (in a web server), a desktop application, or any other program that meets your needs.  The APNS documentation helps a lot in understanding how programs will use the technology.
+
+<br />
+
+=#3:  JavaPNS library=
 
 *JavaPNS* is distributed as a standard `.jar` Java library which you will need to download.
 
@@ -19,21 +33,24 @@ The latest nightly build _(may not be production-ready)_ can be downloaded from 
 
 <br />
 
-=#3:    Java dependencies=
+=#4:    Java dependencies=
 
 A few required open-source libraries will need to be included in the classpath to use JavaPNS:
 
-    * [http://www.bouncycastle.org/latest_releases.html bcprov-jdk15-146.jar]
-    * [http://logging.apache.org/log4j/1.2/download.html log4j-1.2.15.jar]
+    * *[http://www.bouncycastle.org/latest_releases.html bcprov-jdk15-146.jar]* _(reportedly not compatible with Google App Engine)_
+    * *[http://logging.apache.org/log4j/1.2/download.html log4j-1.2.15.jar]*
+
+Where to ultimately put those libraries depends directly on your particular environment.  If you do not know where to put them, you need to get familiar with the installation basics of your environment (ex: Tomcat) before going any further.
+
   
 <br />
 
-=#4:   SSL Certificate (from Apple)=
+=#5:   SSL Certificate (from Apple)=
 The SSL Certificate is created by Apple from the App ID.  This step is the biggest source of problems for first-time users.  SSL certificates need to be generated very carefully, and any deviation from the procedure usually results in unexpected results.  See the *[PreparingCertificates Preparing certificates]* page for all the details.
 
 <br />
 
-=#5:   Device Token=
+=#6:   Device Token=
 A Device Token is provided by the iOS API with the following code:
 
 {{{(void)application:(UIApplication )application didRegisterForRemoteNotificationsWithDeviceToken:(NSData)deviceToken}}}
@@ -46,7 +63,7 @@ Example:
 <br />
 <br />
 
-=#6:    iOS App=
+=#7:    iOS App=
 Badges and alerts will appear if the App is not running and the App is registered with the `PushNotificationService`.
 All other notifications need to be handled by the App while the App is running.
 
