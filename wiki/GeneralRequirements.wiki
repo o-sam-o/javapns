@@ -19,6 +19,9 @@ You also need to be familiar with the basics of your particular execution enviro
 One of JavaPNS's dependencies (BouncyCastle) is reportedly not compatible with the Google App Engine. 
 That execution environment is therefore not supported.</code>
 
+<code> *ABOUT JAVA 7*: 
+Some users have reported problems creating SSL connections while using Java 7 (in general, not just with JavaPNS).  Until this issue is completely resolved, you should try to run JavaPNS with Java 5 or 6 if you experience SSL-related connection issues.</code>
+
 First-time users that have not yet read Apple's documentation on APNS often wonder if a web server is required to use JavaPNS.  There is no such requirement.  JavaPNS can be used within a web application (in a web server), a desktop application, or any other program that meets your needs.  The APNS documentation helps a lot in understanding how programs will use the technology.
 
 <br />
