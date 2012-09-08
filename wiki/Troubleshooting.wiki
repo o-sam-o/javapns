@@ -14,7 +14,7 @@ If the issues you are experiencing have been fixed (according to an issue status
 
 ===Find answers in the documentation===
 
-The *[http://code.google.com/p/javapns/w/list wiki]* contains a lot of useful information to get started and to solve common issues.  The *[http://code.google.com/p/javapns/downloads/list javadoc]* also contains a lot of useful information about using the library.
+The *[http://code.google.com/p/javapns/w/list wiki]* contains a lot of useful information to get started and to solve common issues.  The *[http://javapns.googlecode.com/svn/trunk/doc/javadoc/index.html javadoc]* also contains a lot of useful information about using the library.
 
 <br />
 
