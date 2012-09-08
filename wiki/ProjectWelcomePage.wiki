@@ -1,7 +1,7 @@
 #summary JavaPNS
 #labels Deprecated
  
-=JavaPNS 2.2=
+=JavaPNS 2.3=
 
 ====JavaPNS is a Java library to send notifications through the Apple Push Notification Service====
 
@@ -42,7 +42,7 @@ Welcome to the JavaPNS project, home of the most user-friendly, powerful and fin
 <br />
 
 ====Useful links====
- * [http://javapns.googlecode.com/svn/trunk/doc/index.html JavaPNS javadoc]<br />
+ * [http://javapns.googlecode.com/svn/trunk/doc/javadoc/index.html JavaPNS javadoc]<br />
  * [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Introduction/Introduction.html%23//apple_ref/doc/uid/TP40008194-CH1-SW1 Manual on APNS]<br />
  * [http://code.google.com/p/javapns/wiki/EnhancementsAndRequests Make suggestions...]
 
