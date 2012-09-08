@@ -11,7 +11,7 @@ The first source of documentation for JavaPNS is the *[http://code.google.com/p/
 
 ==Java documentation (javadoc)==
 
-_javadoc_ for the latest public release is available on-line [http://javapns.googlecode.com/svn/trunk/doc/index.html here] or as a .zip file on the [http://code.google.com/p/javapns/downloads/list Downloads] page.
+_javadoc_ for the latest public release is available on-line [http://javapns.googlecode.com/svn/trunk/doc/javadoc/index.html here] or as a .zip file on the [http://code.google.com/p/javapns/downloads/list Downloads] page.
 
 _javadoc_ for nightly builds is available in [http://code.google.com/p/javapns/source/browse/trunk/ SVN].
 
