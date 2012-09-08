@@ -14,33 +14,17 @@ When you create your SSL push service Certificate (Apple), please ensure that En
 <br />
 
 == Generate an APNS certificate ==
-Step by step Instructions: [http://appnotify.com/developer/getting-started-push]
 
-(from: [http://www.developers-life.com/apple-push-notification.html])
+*[http://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ProvisioningDevelopment/ProvisioningDevelopment.html#//apple_ref/doc/uid/TP40008194-CH104-SW3 CLICK HERE for step-by-step instructions]*
 
-  * Each iPhone App requires it's own Certificate.
-  * Only users with `Team Agent` access create a certificate
-  * You need to create an App ID without `.*` in the iPhone developer Portal. An App ID without `.*` means its unique and works only for a single application
+After you have followed Apple's instructions, you will end up with a single ".p12" file containing your certificate and private key.  That file (referred to as a "keystore"), along with the file's password you configured, is what you need to provide to JavaPNS whenever you want to push notifications.
 
-=== Log into the iPhone Developer Program Portal ===
-  # Click on `Certificates` on the left menu
-  # Click on the `How To` tab
-  # Scroll down to the options at the bottom of the page
-  
-=== Certificate request ===
-  # Generate a certificate signing request from your Mac's [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain] and save to disk
-  # Upload the `CertificateSigningRequest.certSigningRequest` to the Program Portal
-  # Wait for the generation of cert (about 1 min). Download the certificate (aps_developer_identity.cer) from the Program Portal
-  # Keep (or rename them if you want) these 2 files in a safe place. You might need the `CertificateSigningRequest.certSigningRequest` file to request a production cert in the future or to renew it again.
-  
-=== Export Certificate from Keychain ===
-  # Import the `aps_developer_identity.cer` into [http://en.wikipedia.org/wiki/Keychain_%28Mac_OS%29 KeyChain]. 
-  # Select both certificate *and* private key (associated to the application you wish to use to send notifications)
-  # Right click, and select `Export 2 elements`, give a name (for example : myCertificate.p12) and password (for example : p@ssw0rd) and then export as p12.
+
 
 <br />
 
 == Useful notes about certificates ==
 
  # *Blank passwords*: blank or null passwords are in violation of the PKCS12 specifications.  Further more, the Java platform's built-in PKCS12 implementation throws exceptions when trying to load a keystore with no password.  Consequently, the JavaPNS library will throw an InvalidKeystorePasswordException if you try to use a blank or null password.  See comment #15 in issue #38 for more information.<br /><br />
- # *Keystore content* (_two certificates in one file_):  do not put certificates for both sandbox and production servers into the same keystore file.  Java's SSL system automatically uses the first certificate in the file, so obviously one server or the other will never work, depending on the order of certificates in the file.  You must produce an independent keystore file for each server.
+ # *Keystore content* (_two certificates in one file_):  do not put certificates for both sandbox and production servers into the same keystore file.  Java's SSL system automatically uses the first certificate in the file, so obviously one server or the other will never work, depending on the order of certificates in the file.  You must produce an independent keystore file for each server.<br /><br />
+ # *Up-to-date keystore*:  You MUST re-generate your keystore file from scratch whenever you make changes to your certificates or any other aspect of your provisioning profile at Apple.  If you do not, you will get errors like "Invalid certificate chain".
