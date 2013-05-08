@@ -101,8 +101,8 @@ The Apple Push Notification System is deceptively tricky to use, in that it has 
 payloadDevicePairs.add(new PayloadPerDevice(PushNotificationPayload.alert("Hello World 2!"), myDevice2));
 payloadDevicePairs.add(new PayloadPerDevice(PushNotificationPayload.alert("Hello World 3!"), myDevice3));
  
-Push.payloads("keystore.p12", "keystore_password", false, payloadDevicePairs);</code>
-
+Push.payloads("keystore.p12", "keystore_password", false, payloadDevicePairs);</code><br />
+ # *How to improve performance?*: If you want to push multiple notifications, *avoid* calling `Push` class methods in a loop.  Most methods in the `Push` class will accept lists of multiple devices and/or payloads, and you should use those whenever possible.  Internally, JavaPNS will optimize its use of sockets and other operations whenever you provide a list of notifications;  those optimizations are not possible if you invoke a `Push` class method repeatedly for each notification you want to push.
 <br /><br />
 
 
