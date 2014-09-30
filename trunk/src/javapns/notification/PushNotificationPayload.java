@@ -156,7 +156,7 @@ public class PushNotificationPayload extends Payload {
 	public PushNotificationPayload(String rawJSON) throws JSONException {
 		super(rawJSON);
 		JSONObject payload = getPayload();
-		this.apsDictionary = payload.getJSONObject("aps");
+		this.apsDictionary = payload.optJSONObject("aps");
 		if (this.apsDictionary == null) {
 			this.apsDictionary = new JSONObject();
 			payload.put("aps", this.apsDictionary);
