@@ -36,6 +36,9 @@ public class PushNotificationManager {
 	 * Set to -1 to leave the timeout to its default setting.
 	 */
 	private int sslSocketTimeout = 30 * 1000;
+	
+	/* Number of milliseconds of inactivity after which the connection must be restarted before sending a new payload. */
+	private static long restartConnectionAfterInactivity = 60 * 1000;
 
 	static final Logger logger = Logger.getLogger(PushNotificationManager.class);
 
@@ -60,6 +63,9 @@ public class PushNotificationManager {
 
 	/* Default retry attempts */
 	private int retryAttempts = DEFAULT_RETRIES;
+
+	/* A timestamp that indicates when the last notification was transmitted */
+	private long lastTransmissionTimestamp = 0;
 
 	private int nextMessageIdentifier = 1;
 
@@ -371,6 +377,16 @@ public class PushNotificationManager {
 	 */
 	private void sendNotification(PushedNotification notification, boolean closeAfter) throws CommunicationException {
 		try {
+
+			if (System.currentTimeMillis() - lastTransmissionTimestamp > restartConnectionAfterInactivity) {
+				try {
+					restartPreviousConnection();
+				} catch (KeystoreException e) {
+					throw new RuntimeException("Cannot restart previous connection because of a keystore issue", e);
+				}
+			}
+			lastTransmissionTimestamp = System.currentTimeMillis();
+			
 			Device device = notification.getDevice();
 			Payload payload = notification.getPayload();
 			try {
@@ -816,4 +832,18 @@ public class PushNotificationManager {
 	public static boolean isResendFeatureEnabled() {
 		return resendFeatureEnabled;
 	}
+
+
+	public static void setRestartConnectionAfterInactivity(long milliseconds) {
+		PushNotificationManager.restartConnectionAfterInactivity = milliseconds;
+	}
+
+
+	public static long getRestartConnectionAfterInactivity() {
+		return restartConnectionAfterInactivity;
+	}
+	
+	
+	
+	
 }
