@@ -16,8 +16,7 @@ You also need to be familiar with the basics of your particular execution enviro
 *JavaPNS* requires Java 1.5 or later.
 
 <code> *IMPORTANT*: 
-One of JavaPNS's dependencies (BouncyCastle) is reportedly not compatible with the Google App Engine. 
-That execution environment is therefore not supported.</code>
+One of JavaPNS's former dependencies (BouncyCastle) is reportedly not compatible with the Google App Engine. Please upgrade to JavaPNS 2.3 Beta 3 or later to use JavaPNS on Google App Engine.</code>
 
 <code> *ABOUT JAVA 7*: 
 Some users have reported problems creating SSL connections while using Java 7 (in general, not just with JavaPNS).  
@@ -42,7 +41,6 @@ The latest nightly build _(may not be production-ready)_ can be downloaded from 
 
 A few required open-source libraries will need to be included in the classpath to use JavaPNS:
 
-    * *[http://www.bouncycastle.org/latest_releases.html bcprov-jdk15-146.jar]* _(reportedly not compatible with Google App Engine)_
     * *[http://logging.apache.org/log4j/1.2/download.html log4j-1.2.15.jar]*
 
 Where to ultimately put those libraries depends directly on your particular environment.  If you do not know where to put them, you need to get familiar with the installation basics of your environment (ex: Tomcat) before going any further.
