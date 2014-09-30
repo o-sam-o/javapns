@@ -9,7 +9,6 @@ import javapns.communication.exceptions.*;
 import javax.net.ssl.*;
 
 import org.apache.log4j.*;
-import org.bouncycastle.jce.provider.*;
 
 /**
  * <h1>Class representing an abstract connection to an Apple server</h1>
@@ -24,7 +23,7 @@ public abstract class ConnectionToAppleServer {
 	protected static final Logger logger = Logger.getLogger(ConnectionToAppleServer.class);
 
 	/* The algorithm used by KeyManagerFactory */
-	private static final String ALGORITHM = ((KeyManagerFactory.getDefaultAlgorithm() == null) ? "sunx509" : KeyManagerFactory.getDefaultAlgorithm());
+	private static final String ALGORITHM = "sunx509";
 
 	/* The protocol used to create the SSLSocket */
 	private static final String PROTOCOL = "TLS";
@@ -33,10 +32,6 @@ public abstract class ConnectionToAppleServer {
 	public static final String KEYSTORE_TYPE_PKCS12 = "PKCS12";
 	/* JKS */
 	public static final String KEYSTORE_TYPE_JKS = "JKS";
-
-	static {
-		Security.addProvider(new BouncyCastleProvider());
-	}
 
 	private KeyStore keyStore;
 	private SSLSocketFactory socketFactory;
