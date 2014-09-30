@@ -15,7 +15,10 @@ import javapns.notification.exceptions.*;
 public class PushNotificationPayload extends Payload {
 
 	/* Maximum total length (serialized) of a payload */
-	private static final int MAXIMUM_PAYLOAD_LENGTH = 256;
+	private static final int MAXIMUM_PAYLOAD_LENGTH = 2048;
+	
+	@Deprecated
+	private static final int MAXIMUM_PAYLOAD_LENGTH_LEGACY = 256;
 
 
 	/**
@@ -218,6 +221,19 @@ public class PushNotificationPayload extends Payload {
 		String previousAlert = getCompatibleProperty("alert", String.class, "A custom alert (\"%s\") was already added to this payload");
 		logger.debug("Adding alert [" + alertMessage + "]" + (previousAlert != null ? " replacing previous alert [" + previousAlert + "]" : ""));
 		put("alert", alertMessage, this.apsDictionary, false);
+	}
+
+
+	/**
+	 * Add a category.
+	 * 
+	 * @param alertMessage the category
+	 * @throws JSONException
+	 */
+	public void addCategory(String category) throws JSONException {
+		String previousCategory = getCompatibleProperty("category", String.class, "A custom category (\"%s\") was already added to this payload");
+		logger.debug("Adding category [" + category + "]" + (previousCategory != null ? " replacing previous category [" + previousCategory + "]" : ""));
+		put("category", category, this.apsDictionary, false);
 	}
 
 
