@@ -22,6 +22,12 @@ public class FeedbackServiceManager {
 
 	protected static final Logger logger = Logger.getLogger(FeedbackServiceManager.class);
 
+	/*
+	 * Number of milliseconds to use as socket timeout.
+	 * Set to -1 to leave the timeout to its default setting.
+	 */
+	private int sslSocketTimeout = 30 * 1000;
+
 	/* Length of the tuple sent by Apple */
 	private static final int FEEDBACK_TUPLE_SIZE = 38;
 
@@ -85,6 +91,7 @@ public class FeedbackServiceManager {
 		LinkedList<Device> listDev = null;
 		try {
 			InputStream socketStream = socket.getInputStream();
+			if (sslSocketTimeout > 0) socket.setSoTimeout(sslSocketTimeout);
 
 			// Read bytes        
 			byte[] b = new byte[1024];
@@ -194,4 +201,23 @@ public class FeedbackServiceManager {
 		return deviceFactory;
 	}
 
+	
+	/**
+	 * Set the SSL socket timeout to use.
+	 * @param sslSocketTimeout
+	 */
+	public void setSslSocketTimeout(int sslSocketTimeout) {
+		this.sslSocketTimeout = sslSocketTimeout;
+	}
+
+
+	/**
+	 * Get the SSL socket timeout currently in use.
+	 * @return the current SSL socket timeout value.
+	 */
+	public int getSslSocketTimeout() {
+		return sslSocketTimeout;
+	}
+
+	
 }
