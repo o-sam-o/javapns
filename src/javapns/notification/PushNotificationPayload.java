@@ -143,7 +143,6 @@ public class PushNotificationPayload extends Payload {
 			JSONObject payload = getPayload();
 			if (!payload.has("aps")) payload.put("aps", this.apsDictionary);
 		} catch (JSONException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -156,16 +155,11 @@ public class PushNotificationPayload extends Payload {
 	 */
 	public PushNotificationPayload(String rawJSON) throws JSONException {
 		super(rawJSON);
-		try {
-			JSONObject payload = getPayload();
-			this.apsDictionary = payload.getJSONObject("aps");
-			if (this.apsDictionary == null) {
-				this.apsDictionary = new JSONObject();
-				payload.put("aps", this.apsDictionary);
-			}
-
-		} catch (JSONException e) {
-			e.printStackTrace();
+		JSONObject payload = getPayload();
+		this.apsDictionary = payload.getJSONObject("aps");
+		if (this.apsDictionary == null) {
+			this.apsDictionary = new JSONObject();
+			payload.put("aps", this.apsDictionary);
 		}
 	}
 
