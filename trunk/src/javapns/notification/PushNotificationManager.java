@@ -446,6 +446,10 @@ public class PushNotificationManager {
 					notification.setTransmissionCompleted(true);
 
 				} catch (IOException e) {
+					
+					if (e.toString().contains("certificate_unknown")) 
+						throw new InvalidCertificateChainException(e.getMessage(), e);
+
 					// throw exception if we surpassed the valid number of retry attempts
 					if (notification.getTransmissionAttempts() >= retryAttempts) {
 						logger.error("Attempt to send Notification failed and beyond the maximum number of attempts permitted");
@@ -834,8 +838,8 @@ public class PushNotificationManager {
 	}
 
 
-	public static void setRestartConnectionAfterInactivity(long milliseconds) {
-		PushNotificationManager.restartConnectionAfterInactivity = milliseconds;
+	public static void setRestartConnectionAfterInactivity(long restartConnectionAfterInactivity) {
+		PushNotificationManager.restartConnectionAfterInactivity = restartConnectionAfterInactivity;
 	}
 
 

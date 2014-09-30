@@ -38,4 +38,12 @@ public class InvalidCertificateChainException extends KeystoreException {
 		super("Invalid certificate chain (" + message + ")!  Verify that the keystore you provided was produced according to specs...");
 	}
 
+	/**
+	 * Constructor with custom message
+	 * @param message
+	 */
+	public InvalidCertificateChainException(String message, Exception cause) {
+		super("Invalid certificate chain (" + message + ")!  Verify that the keystore you provided was produced according to specs...", cause);
+	}
+
 }
