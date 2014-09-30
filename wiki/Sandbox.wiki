@@ -8,4 +8,4 @@
  # *Moving from sandbox to production*: once your notifications are working with the sandbox, you will naturally switch to Apple's production server.  A couple of things to watch out for when transitioning though:  
   * device tokens are not the same for sandbox and production, you need new tokens when moving to production
   * certificates are also different (see [http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ProvisioningDevelopment/ProvisioningDevelopment.html Certificates])
-  * some users have reported issues which might be solved by the procedure described on [http://www.techjini.com/blog/2009/10/22/how-we-fixed-production-push-notifications-not-working-while-sandbox-works/ this page]
+  * some users have reported issues which might be solved by the procedure described on [http://www.techjini.com/blog/how-we-fixed-production-push-notifications-not-working-while-sandbox-works/ this page]
