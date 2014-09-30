@@ -387,16 +387,15 @@ public class PushNotificationManager {
 			String token = device.getToken();
 			// even though the BasicDevice constructor validates the token, we revalidate it in case we were passed another implementation of Device
 			BasicDevice.validateTokenFormat(token);
-			//		PushedNotification pushedNotification = new PushedNotification(device, payload);
 			byte[] bytes = getMessage(token, payload, identifier, notification);
-			//		pushedNotifications.put(pushedNotification.getIdentifier(), pushedNotification);
 
 			/* Special simulation mode to skip actual streaming of message */
 			boolean simulationMode = payload.getExpiry() == 919191;
 
 			boolean success = false;
 
-			BufferedReader in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			// Following line disabled, but kept for future improvements
+			// BufferedReader in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 			int socketTimeout = getSslSocketTimeout();
 			if (socketTimeout > 0) this.socket.setSoTimeout(socketTimeout);
 			notification.setTransmissionAttempts(0);
