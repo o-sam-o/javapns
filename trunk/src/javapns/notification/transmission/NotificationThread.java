@@ -46,7 +46,12 @@ public class NotificationThread implements Runnable, PushQueue {
 		 * This mode is appropriate when you need to periodically send random individual notifications and you do not wish to open and close connections to Apple all the time (which is something Apple warns against in their documentation).
 		 * Unless your software is constantly generating large amounts of random notifications and that you absolutely need to stream them over multiple threaded connections, you should not need to create more than one NotificationThread in QUEUE mode.
 		 */
-		QUEUE
+		QUEUE,
+		
+		/**
+		 * Mode used to stop a queue gracefully.
+		 */
+		STOP
 	};
 
 	private static final int DEFAULT_MAXNOTIFICATIONSPERCONNECTION = 200;
@@ -301,6 +306,10 @@ public class NotificationThread implements Runnable, PushQueue {
 		if (this.thread.getThreadGroup() instanceof NotificationThreads) ((NotificationThreads) this.thread.getThreadGroup()).threadFinished(this);
 	}
 
+	public void stopQueue() {
+		mode = MODE.STOP;
+	}
+	
 
 	public PushQueue add(Payload payload, String token) throws InvalidDeviceTokenFormatException {
 		return add(new PayloadPerDevice(payload, token));
@@ -567,7 +576,7 @@ public class NotificationThread implements Runnable, PushQueue {
 
 
 	private void restartQueue() {
-		if (mode != MODE.QUEUE) return;
+		if (mode != MODE.QUEUE && mode != MODE.STOP) return;
 		try {
 			if (listener != null) listener.eventConnectionRestarted(this);
 			notificationManager.restartConnection(server);

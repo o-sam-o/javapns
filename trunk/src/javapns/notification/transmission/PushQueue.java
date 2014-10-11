@@ -48,6 +48,12 @@ public interface PushQueue {
 	 * @return the queue itself, as a handy shortcut to create and start a queue in a single line of code
 	 */
 	public PushQueue start();
+	
+	
+	/**
+	 * Invoke stopQueue on all threads working for the queue.
+	 */
+	public void stopQueue();
 
 
 	/**

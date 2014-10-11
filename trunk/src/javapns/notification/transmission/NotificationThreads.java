@@ -281,6 +281,13 @@ public class NotificationThreads extends ThreadGroup implements PushQueue {
 			thread.setSleepBetweenNotifications(milliseconds);
 	}
 
+	
+	public void stopQueue() {
+		for (NotificationThread thread : threads)
+			thread.stopQueue();
+	}
+
+	
 
 	/**
 	 * Get a list of threads created to push notifications.
