@@ -25,7 +25,7 @@ public class AppleFeedbackServerBasicImpl extends AppleServerBasicImpl implement
 	 * @throws KeystoreException thrown if an error occurs when loading the keystore
 	 */
 	public AppleFeedbackServerBasicImpl(Object keystore, String password, boolean production) throws KeystoreException {
-		this(keystore, password, ConnectionToAppleServer.KEYSTORE_TYPE_PKCS12, production);
+		this(keystore, password, ConnectionToAppleServer.getKeystoreType(), production);
 	}
 
 

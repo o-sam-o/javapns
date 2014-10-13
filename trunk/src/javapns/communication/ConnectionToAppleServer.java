@@ -28,6 +28,8 @@ public abstract class ConnectionToAppleServer {
 	/* The protocol used to create the SSLSocket */
 	private static final String PROTOCOL = "TLS";
 
+	private static final String LOCAL_KEYSTORE_TYPE_PROPERTY = "javapns.communication.keystoreType";
+
 	/* PKCS12 */
 	public static final String KEYSTORE_TYPE_PKCS12 = "PKCS12";
 	/* JKS */
@@ -249,6 +251,13 @@ public abstract class ConnectionToAppleServer {
 		}
 
 		/* tunneling Handshake was successful! */
+	}
+	
+	public static String getKeystoreType() {
+		String type = System.getProperty(LOCAL_KEYSTORE_TYPE_PROPERTY, KEYSTORE_TYPE_PKCS12);
+		if (type == null || type.length() == 0)
+			type = KEYSTORE_TYPE_PKCS12;
+		return type;
 	}
 
 }
