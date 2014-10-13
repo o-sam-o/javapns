@@ -99,7 +99,7 @@ public class PushedNotifications extends Vector<PushedNotification> implements L
 	private void prepareAdd(int n) {
 		int size = size();
 		if (size + n > maxRetained) {
-			for (int i = 0; i < n; i++)
+			for (int i = 0; i < n && size() > 0; i++)
 				remove(0);
 		}
 	}
