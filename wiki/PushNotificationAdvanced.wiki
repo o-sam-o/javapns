@@ -118,7 +118,12 @@ To work around these predefined settings, take a look at the following code:
 }</code>
 
 
+====Changing default keystore type====
+
+JavaPNS uses "PKCS12" as the default keystore type.  You can customize this by setting a system property "javapns.communication.keystoreType" to the keystore type you want to use.  That property can be set to "PKCS12", "JKS", or any type supported by the JVM.
+
 <br />
+
 
 ===OTA MDM technology support===
 
