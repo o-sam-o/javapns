@@ -3,6 +3,7 @@ package javapns.notification;
 import java.util.*;
 
 import javapns.devices.*;
+import javapns.devices.implementations.basic.*;
 import javapns.notification.exceptions.*;
 
 /**
@@ -248,7 +249,14 @@ public class PushedNotification {
 		StringBuilder msg = new StringBuilder();
 		msg.append("[" + identifier + "]");
 		msg.append(transmissionCompleted ? " transmitted " + payload + " on " + getLatestTransmissionAttempt() : " not transmitted");
-		msg.append(" to token " + device.getToken().substring(0, 5) + ".." + device.getToken().substring(59, 64));
+		msg.append(" to token " );
+		try {
+			// Test if token is valid
+			new BasicDevice(device.getToken(), true);
+			msg.append(device.getToken().substring(0, 5) + ".." + device.getToken().substring(59, 64));
+		} catch (Exception e) {
+			msg.append("INVALID_TOKEN:[" + device.getToken() + "]");
+		}
 		if (response != null) {
 			msg.append("  " + response.getMessage());
 		}
