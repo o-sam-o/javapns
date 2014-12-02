@@ -15,7 +15,7 @@ When you create your SSL push service Certificate (Apple), please ensure that En
 
 == Generate an APNS certificate ==
 
-*[http://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ProvisioningDevelopment/ProvisioningDevelopment.html#//apple_ref/doc/uid/TP40008194-CH104-SW3 CLICK HERE for step-by-step instructions]*
+*[https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ProvisioningDevelopment.html CLICK HERE for step-by-step instructions]*
 
 After you have followed Apple's instructions, you will end up with a single ".p12" file containing your certificate and private key.  That file (referred to as a "keystore"), along with the file's password you configured, is what you need to provide to JavaPNS whenever you want to push notifications.
 
